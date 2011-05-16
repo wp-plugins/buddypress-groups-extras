@@ -88,9 +88,8 @@ class BPGE extends BP_Group_Extension {
 					echo '</select>';
 					break;
 				case 'checkbox':
-					
 					foreach($field->options as $option){
-						echo '<input ' . ( in_array($option, $field->value) ? 'checked="checked"' : '') .' type="' . $field->type . '" name="bpge-' . $field->slug . '[]" value="' . $option . '"> ' . $option . '<br />';
+						echo '<input ' . ( in_array($option, (array)$field->value) ? 'checked="checked"' : '') .' type="' . $field->type . '" name="bpge-' . $field->slug . '[]" value="' . $option . '"> ' . $option . '<br />';
 					}
 					break;
 				case 'radio':
