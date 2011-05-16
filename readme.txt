@@ -14,7 +14,7 @@ After activating your groups will have ability to create any custom fields they 
 = Features =
 * Choose groups you want to allow custom fields.
 * Create custom fields using various type (radios, select, input, textarea etc)
-* Edit fields data on Edit Group page detaild in Group Admin area.
+* Edit fields data on Edit Group Details page in Group Admin area.
 * Display / hide page, where fields (chosen by you) will be displayed.
 * Reorder fields.
 * and more to come in future releases!
