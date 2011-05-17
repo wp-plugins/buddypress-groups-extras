@@ -248,7 +248,7 @@ class BPGE extends BP_Group_Extension {
 			echo '<label>' . __('Field Description', 'bpge') . '</label>';
 				echo '<textarea name="extra-field-desc">'.$field->title.'</textarea>';
 			
-			echo '<label for="extra-field-required">' . __('Is this field required (will be displayed on appropriate group creation step)?','bpge') . '</label>';
+			echo '<label for="extra-field-required">' . __('Is this field required (will be marked as required on Edit Group Details page)?','bpge') . '</label>';
 				$req = '';
 				$not_req = 'checked="checked"';
 				if ( $field->required == 1 ) {
