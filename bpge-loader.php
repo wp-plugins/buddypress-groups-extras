@@ -23,8 +23,11 @@ class BPGE extends BP_Group_Extension {
 	function BPGE(){
 		global $bp;
 		
-		// populate extra extras data in global var
-		$bp->groups->current_group->extras = groups_get_groupmeta($bp->groups->current_group->id, 'bpge');
+		if (!empty($bp->groups->current_group)){
+			// populate extras data in global var
+			$bp->groups->current_group->extras = groups_get_groupmeta($bp->groups->current_group->id, 'bpge');
+			add_action('bp_groups_adminbar_admin_menu', array($this, 'buddybar_admin_link'));
+		}
 		
 		// Display or Hide top menu from group non-members
 		$this->visibility = $bp->groups->current_group->extras['display_page'] ? $bp->groups->current_group->extras['display_page'] : 'public';
@@ -42,10 +45,11 @@ class BPGE extends BP_Group_Extension {
 	// Public page with already saved content
 	function display() {
 		global $bp;
-		$fields = $this->get_all_fields($bp->groups->current_group->id);
+		$fields = $this->get_all_items('fields', $bp->groups->current_group->id);
 		if (empty($fields))
 			return false;
-			
+		
+		// Variant 1
 		echo '<div class="extra-data">';
 			foreach($fields as $field){
 				if ( $field->display != 1)
@@ -58,12 +62,28 @@ class BPGE extends BP_Group_Extension {
 				echo '<p>' . $data . '</p>';
 			}
 		echo '</div>';
+		
+		echo '<hr />';
+		
+		// Variant 2
+		echo '<table class="profile-fields zebra">';
+			foreach($fields as $field){
+				if ( $field->display != 1)
+					continue;
+				 
+				echo '<tr><td class="label" title="' . ( ! empty($field->desc)  ? esc_attr($field->desc) : '')  .'">' . $field->title .'</td>';
+				$data = groups_get_groupmeta($bp->groups->current_group->id, $field->slug);
+				if ( is_array($data))
+					$data = implode(', ', $data);
+				echo '<td class="data">' . $data . '</td></tr>';
+			}
+		echo '</table>';
 	}
 
 	// Display exra fields on edit group details page
 	function edit_group_fields(){
 		global $bp;
-		$fields = $this->get_all_fields($bp->groups->current_group->id);
+		$fields = $this->get_all_items('fields', $bp->groups->current_group->id);
 		if (empty($fields))
 			return false;
 		
@@ -145,21 +165,26 @@ class BPGE extends BP_Group_Extension {
 		//echo 'BP_Group_Extension::widget_display()';
 	}
 
-	// Admin area
+	// Admin area - Main
 	function edit_screen() {
 		global $bp;
 		//print_var($bp->groups->current_group);
 
 		if ( 'admin' == $bp->current_action && $bp->action_variables[1] == 'fields' ) {
 			$this->edit_screen_fields($bp);
+		}elseif ( 'admin' == $bp->current_action && $bp->action_variables[1] == 'pages' ) {
+			$this->edit_screen_pages($bp);
 		}elseif ( 'admin' == $bp->current_action && $bp->action_variables[1] == 'fields-manage' ) {
 			$this->edit_screen_fields_manage($bp);
+		}elseif ( 'admin' == $bp->current_action && $bp->action_variables[1] == 'pages-manage' ) {
+			$this->edit_screen_pages_manage($bp);
 		}else{
 			$this->edit_screen_general($bp);
 		}
 
 	}
 	
+	// Admin area - General
 	function edit_screen_general($bp){
 		
 		$public_checked = $bp->groups->current_group->extras['display_page'] == 'public' ? 'checked="checked"' : '';
@@ -177,7 +202,7 @@ class BPGE extends BP_Group_Extension {
 		
 		/*
 		echo '<p>';
-			$fields = $this->get_all_fields($bp->groups->current_group->id);
+			$fields = $this->get_all_items('fields', $bp->groups->current_group->id);
 			if (!empty($fields)){
 				echo '<label for="group_extras_display">'.sprintf(__('Please choose below the fields you want to show on <strong>"%s"</strong> page:','bpge'), $this->nav_item_name).'</label>';
 				foreach ((array)$fields as $field){
@@ -191,34 +216,60 @@ class BPGE extends BP_Group_Extension {
 		wp_nonce_field('groups_edit_group_extras');
 	}
 	
+	// Admin area - Fields
 	function edit_screen_fields($bp){
-	
 		$this->edit_screen_head('fields');
 
-		$fields = $this->get_all_fields($bp->groups->current_group->id);
+		$fields = $this->get_all_items('fields', $bp->groups->current_group->id);
 
 		if(empty($fields)){
-			$this->notices('no-fields');
+			$this->notices('no_fields');
 			return false;
 		}
 
 		echo '<ul id="fields-sortable">';
 			foreach($fields as $field){
 				echo '<li id="position_'.str_replace('_', '', $field->slug).'" class="default">
-								<strong title="' . $field->desc . '">' . $field->title .'</strong> &rarr; ' . $field->type . '
-								<span class="field-link">
+								<strong title="' . $field->desc . '">' . $field->title .'</strong> &rarr; ' . $field->type . ' &rarr; ' . (($field->display == 1)?__('displayed','bpge'):__('not displayed','bpge')) . '
+								<span class="items-link">
 									<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug . '/fields-manage/?edit=' . $field->slug . '" class="button" title="'.__('Change its title, description etc','bpge').'">'.__('Edit field', 'bpge').'</a>&nbsp;
-									<a href="#" class="button delete_field" title="'.__('Delete this field and all its content', 'bpge').'">'.__('Delete', 'bpge').'</a>
+									<a href="#" class="button delete_field" title="'.__('Delete this item and all its content', 'bpge').'">'.__('Delete', 'bpge').'</a>
 								</span>
 							</li>';
 			}
 		echo '</ul>';
 	}
 	
+	// Admin area - Pages
+	function edit_screen_pages($bp){
+		$this->edit_screen_head('pages');
+		
+		$pages = $this->get_all_items('pages', $bp->groups->current_group->id);
+
+		if(empty($pages)){
+			$this->notices('no_pages');
+			return false;
+		}
+		
+		echo '<ul id="pages-sortable">';
+			foreach($pages as $page){
+				echo '<li id="position_'.str_replace('_', '', $page->slug).'" class="default">
+								<strong>' . $page->title .'</strong> &rarr; ' . (($page->display == 1)?__('displayed','bpge'):__('not displayed','bpge')) . '
+								<span class="items-link">
+									<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug . '/pages-manage/?edit=' . $page->slug . '" class="button" title="'.__('Change its title, parent page etc','bpge').'">'.__('Edit field', 'bpge').'</a>&nbsp;
+									<a href="#" class="button delete_page" title="'.__('Delete this item and all its content', 'bpge').'">'.__('Delete', 'bpge').'</a>
+								</span>
+							</li>';
+			}
+		echo '</ul>';
+		
+	}
+	
+	// Add / Edit fields form
 	function edit_screen_fields_manage($bp){
 
 		if (isset($_GET['edit']) && !empty($_GET['edit'])){
-			$field = $this->get_field_by_slug($_GET['edit']);
+			$field = $this->get_item_by_slug('field', $_GET['edit']);
 		}
 		
 		$this->edit_screen_head('fields-manage');
@@ -248,7 +299,7 @@ class BPGE extends BP_Group_Extension {
 			echo '<label>' . __('Field Description', 'bpge') . '</label>';
 				echo '<textarea name="extra-field-desc">'.$field->title.'</textarea>';
 			
-			echo '<label for="extra-field-required">' . __('Is this field required (will be marked as required on Edit Group Details page)?','bpge') . '</label>';
+			echo '<label for="extra-field-required">' . __('Is this field required (will be marked as required on group Edit Details page)?','bpge') . '</label>';
 				$req = '';
 				$not_req = 'checked="checked"';
 				if ( $field->required == 1 ) {
@@ -274,6 +325,54 @@ class BPGE extends BP_Group_Extension {
 		}else{
 			echo '<input type="hidden" name="extra-field-slug" value="' . $field->slug . '">';
 			echo '<p><input type="submit" name="save_fields_edit" id="save" value="'.__('Save Changes &rarr;','bpge').'"></p>';
+		}
+		wp_nonce_field('groups_edit_group_extras');
+	}
+	
+	// Add / Edit pages form
+	function edit_screen_pages_manage($bp){
+		if (isset($_GET['edit']) && !empty($_GET['edit'])){
+			$page = $this->get_item_by_slug('page', $_GET['edit']);
+		}
+		$pages = $this->get_all_items('pages', $bp->groups->current_group->id);
+		
+		$this->edit_screen_head('pages-manage');
+		
+		echo '<p>';
+			echo '<label>' . __('Page Title', 'bpge') . '</label>';
+			echo '<input type="text" value="'.$page->title.'" name="extra-page-title">';
+		echo '</p>';
+		
+		echo '<label>' . __('Page Parent', 'bpge') . '</label>';
+			echo '<select name="extra-page-parent">';
+				echo '<option value="0">'.__('no parent','').'</option>';
+				foreach ($pages as $parent){
+					if(!empty($parent->parent)) continue;
+					$selected = '';
+					if ($parent->slug == $page->parent) $selected = 'selected="selected"';
+					echo '<option '. $selected .' value="'.$parent->slug.'">'.$parent->title.'</option>';
+				}
+			echo '</select>';
+		echo '<p class="description">'.__('Only 1 level is allowed', 'bpge') .'</p>';
+		
+		
+		echo '<p>';
+			echo '<label for="extra-page-display">' . __('Should this page be displayed for public in group navigation?','bpge') . '</label>';
+				$disp = 'checked="checked"';
+				$not_disp = '';
+				if ( $page->display != 1 ) {
+					$not_disp = 'checked="checked"';
+					$disp = '';
+				}
+				echo '<input type="radio" value="1" '.$disp.' name="extra-page-display"> '.__('Display it', 'bpge').'<br />';
+				echo '<input type="radio" value="0" '.$not_disp.' name="extra-page-display"> '. __('Do NOT display it', 'bpge');
+		echo '</p>';
+		
+		if (empty($page)){
+			echo '<p><input type="submit" name="save_pages_add" id="save" value="'.__('Create New &rarr;','bpge').'"></p>';
+		}else{
+			echo '<input type="hidden" name="extra-page-slug" value="' . $page->slug . '">';
+			echo '<p><input type="submit" name="save_pages_edit" id="save" value="'.__('Save Changes &rarr;','bpge').'"></p>';
 		}
 		wp_nonce_field('groups_edit_group_extras');
 	}
@@ -308,7 +407,7 @@ class BPGE extends BP_Group_Extension {
 					return false;
 
 				// get current fields if any
-				$fields = $this->get_all_fields($bp->groups->current_group->id);
+				$fields = $this->get_all_items('fields', $bp->groups->current_group->id);
 				if (!$fields)	
 					$fields = array();
 				
@@ -332,9 +431,38 @@ class BPGE extends BP_Group_Extension {
 				$fields = json_encode($fields);
 				groups_update_groupmeta( $bp->groups->current_group->id, 'bpge_fields', $fields );
 
-				$this->notices('added');
+				$this->notices('added_field');
 				
 				bp_core_redirect( bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/fields/' );
+			}
+			
+			// Save new page
+			if ( isset($_POST['save_pages_add'])){
+				/* Check the nonce first. */
+				if ( !check_admin_referer( 'groups_edit_group_extras' ) )
+					return false;
+
+				// get current pages if any
+				$pages = $this->get_all_items('pages', $bp->groups->current_group->id);
+				if (!$pages)	
+					$pages = array();
+				
+				$new = new Stdclass;
+				$new->title = htmlspecialchars(strip_tags($_POST['extra-page-title']));
+				$new->slug = str_replace('-', '_', sanitize_title($new->title)); // will be used as unique identifier
+				$new->parent = ($_POST['extra-page-parent'] == '0') ? false : $_POST['extra-page-parent'];
+				$new->display = $_POST['extra-page-display'];
+				
+				// To the end of an array of current pages
+				array_push($pages, $new);
+
+				// Save into groupmeta table
+				$pages = json_encode($pages);
+				groups_update_groupmeta( $bp->groups->current_group->id, 'bpge_pages', $pages );
+
+				$this->notices('added_page');
+				
+				bp_core_redirect( bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/pages/' );
 			}
 			
 			// Edit existing field
@@ -344,7 +472,7 @@ class BPGE extends BP_Group_Extension {
 					return false;
 					
 				// get current fields
-				$fields = $this->get_all_fields($bp->groups->current_group->id);
+				$fields = $this->get_all_items('fields', $bp->groups->current_group->id);
 				foreach( $fields as $field ){
 					if ( $_POST['extra-field-slug'] == $field->slug ){
 						$field->title = htmlspecialchars(strip_tags($_POST['extra-field-title']));
@@ -358,9 +486,35 @@ class BPGE extends BP_Group_Extension {
 				$updated = json_encode($updated);
 				groups_update_groupmeta( $bp->groups->current_group->id, 'bpge_fields', $updated );
 				
-				$this->notices('edited');
+				$this->notices('edited_field');
 				
 				bp_core_redirect( bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/fields/' );
+				
+			}
+			
+			// Edit existing page
+			if ( isset($_POST['save_pages_edit'])){
+				/* Check the nonce first. */
+				if ( !check_admin_referer( 'groups_edit_group_extras' ) )
+					return false;
+					
+				// get current fields
+				$pages = $this->get_all_items('pages', $bp->groups->current_group->id);
+				foreach( $pages as $page ){
+					if ( $_POST['extra-page-slug'] == $page->slug ){
+						$page->title = htmlspecialchars(strip_tags($_POST['extra-page-title']));
+						$page->parent = ($_POST['extra-page-parent'] == '0') ? false : $_POST['extra-page-parent'];
+						$page->display = $_POST['extra-page-display'];
+					}
+					$updated[] = $page;
+				}
+				// Save into groupmeta table
+				$updated = json_encode($updated);
+				groups_update_groupmeta( $bp->groups->current_group->id, 'bpge_pages', $updated );
+				
+				$this->notices('edited_page');
+				
+				bp_core_redirect( bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/pages/' );
 				
 			}
 		}
@@ -368,62 +522,119 @@ class BPGE extends BP_Group_Extension {
 
 	// Display Header and Extra-Nav
 	function edit_screen_head($cur = 'general'){
-		if ($cur == 'general'){
-			echo '<span class="extra-title">'.bpge_names('title_general').'</span>';
-			echo '<span class="extra-subnav">
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/'.'" class="button active">'. __('General', 'bpge') .'</a>
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/fields/'.'" class="button">'. __('All Fields', 'bpge') .'</a>
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/fields-manage/'.'" class="button">'. __('Add Fields', 'bpge') .'</a>
-					</span>';
-		}elseif ($cur == 'fields'){
-			echo '<span class="extra-title">'.bpge_names('title_fields').'</span>';
-			echo '<span class="extra-subnav">
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/'.'" class="button">'. __('General', 'bpge') .'</a>
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/fields/'.'" class="button active">'. __('All Fields', 'bpge') .'</a>
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug .'/fields-manage/'.'" class="button">'. __('Add Fields', 'bpge') .'</a>
-					</span>';
-		}elseif ($cur == 'fields-manage'){
-			if ( isset($_GET['edit']) && !empty($_GET['edit']) ){
-				echo '<span class="extra-title">'.bpge_names('title_fields_edit').'</span>';
-				$active = '';
-			}else{
-				echo '<span class="extra-title">'.bpge_names('title_fields_add').'</span>';
-				$active = 'active';
-			}
-			echo '<span class="extra-subnav">
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug . '/" class="button">'. __('General', 'bpge') .'</a>
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug . '/fields/" class="button">'. __('All Fields', 'bpge') .'</a>
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug . '/fields-manage/" class="button ' . $active . '">'. __('Add Fields', 'bpge') .'</a>
-					</span>';
+		$group_link = bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug;
+		switch($cur){
+			case 'general':
+				echo '<span class="extra-title">'.bpge_names('title_general').'</span>';
+				echo '<span class="extra-subnav">
+							<a href="'. $group_link .'/" class="button active">'. __('General', 'bpge') .'</a>
+							<a href="'. $group_link .'/fields/" class="button">'. __('All Fields', 'bpge') .'</a>
+							<a href="'. $group_link .'/pages/" class="button">'. __('All Pages', 'bpge') .'</a>
+							<a href="'. $group_link .'/fields-manage/'.'" class="button">'. __('Add Field', 'bpge') .'</a>
+							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>
+						</span>';
+				break;
+			
+			case 'fields':
+				echo '<span class="extra-title">'.bpge_names('title_fields').'</span>';
+				echo '<span class="extra-subnav">
+							<a href="'. $group_link .'/" class="button">'. __('General', 'bpge') .'</a>
+							<a href="'. $group_link .'/fields/" class="button active">'. __('All Fields', 'bpge') .'</a>
+							<a href="'. $group_link .'/pages/" class="button">'. __('All Pages', 'bpge') .'</a>
+							<a href="'. $group_link .'/fields-manage/'.'" class="button">'. __('Add Field', 'bpge') .'</a>
+							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>
+						</span>';
+				break;
+			
+			case 'fields-manage':
+				if ( isset($_GET['edit']) && !empty($_GET['edit']) ){
+					echo '<span class="extra-title">'.bpge_names('title_fields_edit').'</span>';
+					$active = '';
+				}else{
+					echo '<span class="extra-title">'.bpge_names('title_fields_add').'</span>';
+					$active = 'active';
+				}
+				echo '<span class="extra-subnav">
+							<a href="'. $group_link . '/" class="button">'. __('General', 'bpge') .'</a>
+							<a href="'. $group_link . '/fields/" class="button">'. __('All Fields', 'bpge') .'</a>
+							<a href="'. $group_link . '/pages/" class="button">'. __('All Pages', 'bpge') .'</a>
+							<a href="'. $group_link . '/fields-manage/" class="button ' . $active . '">'. __('Add Field', 'bpge') .'</a>
+							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>
+						</span>';
+				break;
+				
+			case 'pages':
+				echo '<span class="extra-title">'.bpge_names('title_pages').'</span>';
+				echo '<span class="extra-subnav">
+							<a href="'. $group_link .'/" class="button">'. __('General', 'bpge') .'</a>
+							<a href="'. $group_link .'/fields/" class="button">'. __('All Fields', 'bpge') .'</a>
+							<a href="'. $group_link .'/pages/" class="button active">'. __('All Pages', 'bpge') .'</a>
+							<a href="'. $group_link .'/fields-manage/'.'" class="button">'. __('Add Field', 'bpge') .'</a>
+							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>
+						</span>';
+				break;
+			
+			case 'pages-manage':
+				if ( isset($_GET['edit']) && !empty($_GET['edit']) ){
+					echo '<span class="extra-title">'.bpge_names('title_pages_edit').'</span>';
+					$active = '';
+				}else{
+					echo '<span class="extra-title">'.bpge_names('title_pages_add').'</span>';
+					$active = 'active';
+				}
+				echo '<span class="extra-subnav">
+							<a href="'. $group_link . '/" class="button">'. __('General', 'bpge') .'</a>
+							<a href="'. $group_link . '/fields/" class="button">'. __('All Fields', 'bpge') .'</a>
+							<a href="'. $group_link . '/pages/" class="button">'. __('All Pages', 'bpge') .'</a>
+							<a href="'. $group_link . '/fields-manage/" class="button">'. __('Add Field', 'bpge') .'</a>
+							<a href="'. $group_link .'/pages-manage/'.'" class="button ' . $active . '">'. __('Add Page', 'bpge') .'</a>
+						</span>';
+				break;
 		}
+		do_action('bpge_extra_menus', $cur);
 	}
 	
-	// Getting all extra fields for define group
-	function get_all_fields($id){
+	// Getting all extra items (fields or pages) for defined group
+	function get_all_items($type, $id){
 		// get all fields
-		$fields = array();
-		$fields = groups_get_groupmeta($id, 'bpge_fields');
-
-		if (empty($fields)) {
-			$fields = false;
-		}else{
-			$fields = json_decode($fields);
+		$items = array();
+		
+		if ( $type == 'fields' ){
+			$items = groups_get_groupmeta($id, 'bpge_fields');
+		}elseif ( $type == 'pages' ){
+			$items = groups_get_groupmeta($id, 'bpge_pages');
 		}
-		return $fields;
+
+		if (empty($items)) {
+			$items = false;
+		}else{
+			$items = json_decode($items);
+		}
+		
+		return $items;
 	}
 	
-	// Get field by slug - reusable
-	function get_field_by_slug($slug){
+	// Get item (field or page) by slug - reusable
+	function get_item_by_slug($type, $slug){
 		global $bp;
 		// just in case...
-		if (!is_string($slug))
+		if (!is_string($type) || !is_string($slug))
 			return false;
 			
-		$fields = $this->get_all_fields($bp->groups->current_group->id);
-		foreach( $fields as $field ){
-			if ( $slug == $field->slug )
-				$searched = $field;
+		$items = array();
+		$searched = array();
+		
+		if ( $type == 'field'){
+			$items = $this->get_all_items('fields', $bp->groups->current_group->id);
+		}elseif ( $type == 'page'){
+			$items = $this->get_all_items('pages', $bp->groups->current_group->id);
 		}
+		
+		foreach( $items as $item ){
+			if ( $slug == $item->slug )
+				$searched = $item;
+		}
+		
 		return $searched;
 	}
 	
@@ -433,14 +644,23 @@ class BPGE extends BP_Group_Extension {
 			case 'updated';
 				bp_core_add_message(__('Group Extras settings were succefully updated.','bpge'));
 				break;
-			case 'added';
+			case 'added_field';
 				bp_core_add_message(__('New field was successfully added.','bpge'));
 				break;
-			case 'edted';
+			case 'edited_field';
 				bp_core_add_message(__('The field was successfully updated.','bpge'));
 				break;
-			case 'no-fields':
-				echo '<div class="" id="message"><p>' . __('Please create at least 1 extra field.', 'bpge') . '</p></div>';
+			case 'added_page';
+				bp_core_add_message(__('New page was successfully added.','bpge'));
+				break;
+			case 'edited_page';
+				bp_core_add_message(__('The page was successfully updated.','bpge'));
+				break;
+			case 'no_fields':
+				echo '<div class="" id="message"><p>' . __('Please create at least 1 extra field to show it in a list.', 'bpge') . '</p></div>';
+				break;
+			case 'no_pages':
+				echo '<div class="" id="message"><p>' . __('Please create at least 1 extra page to show it in a list.', 'bpge') . '</p></div>';
 				break;
 		}
 	}
@@ -453,9 +673,9 @@ class BPGE extends BP_Group_Extension {
 		switch($method){
 			case 'reorder_fields':
 				parse_str($_POST['field_order'], $field_order );
-				$fields = $this->get_all_fields($bp->groups->current_group->id);
+				$fields = $this->get_all_items('fields', $bp->groups->current_group->id);
 
-				// reorder all fields accordig new positions
+				// reorder all fields accordig to new positions
 				foreach($field_order['position'] as $u_slug){
 					foreach($fields as $field){
 						if ( $u_slug == str_replace('_', '', $field->slug) ){
@@ -472,7 +692,7 @@ class BPGE extends BP_Group_Extension {
 				break;
 				
 			case 'delete_field':
-				$fields = $this->get_all_fields($bp->groups->current_group->id);
+				$fields = $this->get_all_items('fields', $bp->groups->current_group->id);
 				$left = array();
 				// Delete all corresponding data
 				foreach( $fields as $field ) {
@@ -482,9 +702,46 @@ class BPGE extends BP_Group_Extension {
 					}
 					array_push($left, $field);
 				}
-				// Save fields that were left
+				// Save fields that are left
 				$left = json_encode($left);
 				groups_update_groupmeta($bp->groups->current_group->id, 'bpge_fields', $left);
+				die('deleted');
+				break;
+				
+			case 'reorder_pages':
+				parse_str($_POST['page_order'], $page_order );
+				$pages = $this->get_all_items('pages', $bp->groups->current_group->id);
+
+				// reorder all fields accordig to new positions
+				foreach($page_order['position'] as $u_slug){
+					foreach($pages as $page){
+						if ( $u_slug == str_replace('_', '', $page->slug) ){
+							$new_order[] = $page;
+							//break;
+						}
+					}
+				}
+
+				// Save new order into groupmeta table
+				$new_order = json_encode($new_order);
+				groups_update_groupmeta( $bp->groups->current_group->id, 'bpge_pages', $new_order );
+				die('saved');
+				break;
+				
+			case 'delete_page':
+				$pages = $this->get_all_items('pages', $bp->groups->current_group->id);
+				$left = array();
+				// Delete all corresponding data
+				foreach( $pages as $page ) {
+					if ( str_replace('_', '', $page->slug) == $_POST['page'] ){
+						groups_delete_groupmeta($bp->groups->current_group->id, $page->slug);
+						continue;
+					}
+					array_push($left, $page);
+				}
+				// Save fields that are left
+				$left = json_encode($left);
+				groups_update_groupmeta($bp->groups->current_group->id, 'bpge_pages', $left);
 				die('deleted');
 				break;
 				
@@ -503,14 +760,20 @@ class BPGE extends BP_Group_Extension {
 		echo 'BP_Group_Extension::create_screen_save()';
 	}
 
+	// Display a link for group/site admins in BuddyBar when on group page
+	function buddybar_admin_link(){
+		global $bp;
+		echo '<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '">'. __( "Manage Extras", 'bpge' ) .'</a></li>';
+	}
+	
 	// Load if was not already loaded
 	private static $instance = false;
-    static function getInstance(){
-        if(!self::$instance)
-            self::$instance = new BPGE;
-        
-        return self::$instance;
-    }
+	static function getInstance(){
+		if(!self::$instance)
+			self::$instance = new BPGE;
+		
+		return self::$instance;
+	}
 }
 
 bp_register_group_extension('BPGE');

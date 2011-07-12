@@ -3,7 +3,7 @@
 Plugin Name: BuddyPress Groups Extras
 Plugin URI: http://ovirium.com/
 Description: Adding extra group fields and some other missing functionality to groups
-Version: 1.0
+Version: 1.2
 Author: slaFFik
 Author URI: http://cosydale.com/
 */
@@ -41,6 +41,7 @@ function bpge_load(){
 	}
 }
 
+// Helper for generating some titles
 function bpge_names($name = 'name'){
 	switch ($name){
 		case 'title_general':
@@ -49,11 +50,20 @@ function bpge_names($name = 'name'){
 		case 'title_fields':
 			return __('Group Extras &rarr; Fields Management', 'bpge');
 			break;
+		case 'title_pages':
+			return __('Group Extras &rarr; Pages Management', 'bpge');
+			break;
 		case 'title_fields_add':
-			return __('Group Extras &rarr; Add Fields', 'bpge');
+			return __('Group Extras &rarr; Add Field', 'bpge');
 			break;
 		case 'title_fields_edit':
 			return __('Group Extras &rarr; Edit Field', 'bpge');
+			break;
+		case 'title_pages_add':
+			return __('Group Extras &rarr; Add Page', 'bpge');
+			break;
+		case 'title_pages_edit':
+			return __('Group Extras &rarr; Edit Page', 'bpge');
 			break;
 		case 'name':
 			return __('Description', 'bpge');
@@ -64,14 +74,24 @@ function bpge_names($name = 'name'){
 	}
 }
 
-// tech func
-if (!function_exists('print_var')){
-    function print_var($var){
-        echo '<pre>';
-        if(!empty($var))
-            print_r($var);
-        else
-            var_dump($var);
-        echo '</pre>';
-    }
+/*
+ * Personal debug functions
+ */
+if(!function_exists('print_var')){
+	function print_var($var, $die = false){
+		echo '<pre>';
+		if (empty($var))
+			var_dump($var);
+		else
+			print_r($var);
+		echo '</pre>';
+		if ($die)
+			die;
+	}
+}
+
+add_action('bp_adminbar_menus', 'bpge_queries');
+function bpge_queries(){
+    echo '<li class="no-arrow"><a>'.get_num_queries() . ' queries | ';
+    echo round(memory_get_usage() / 1024 / 1024, 2) . 'Mb</a></li>';
 }

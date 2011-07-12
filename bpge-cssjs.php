@@ -4,7 +4,7 @@ function bpge_js_all() {
 	global $bp;
 	/*
 	$bp->action_variable[0] = extras
-	$bp->action_variable[1] = fields | fields-manage
+	$bp->action_variable[1] = fields | pages | fields-manage | pages-manage
 	*/
 	if (is_admin())
 		wp_enqueue_script('BPGE_ADMIN_JS', WP_PLUGIN_URL.'/buddypress-groups-extras/_inc/admin-scripts.js', array('jquery') );

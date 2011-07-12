@@ -15,14 +15,16 @@ form#group-settings-form span.extra-subnav a.active{
 }
 
 /*
- * SECTION: MANAGE FIELDS 
+ * SECTION: MANAGE FIELDS / PAGES
  */
-form#group-settings-form #fields-sortable {
+form#group-settings-form #fields-sortable,
+form#group-settings-form #pages-sortable {
 	list-style-type: none;
 	margin: 20px 0 0;
 	padding: 0;
 }
-form#group-settings-form #fields-sortable li {
+form#group-settings-form #fields-sortable li,
+form#group-settings-form #pages-sortable li{
     background: #FFF;
     border: 1px solid #CCC;
 	cursor: move;
@@ -31,11 +33,13 @@ form#group-settings-form #fields-sortable li {
     margin: 0 5px 5px;
     padding: 5px;
 }
-form#group-settings-form #fields-sortable li.highlight {
+form#group-settings-form #fields-sortable li.highlight,
+form#group-settings-form #pages-sortable li.highlight {
 	background:#EAEAEA;
 	border:1px solid #ccc;
 }
-form#group-settings-form #fields-sortable li span.field-link{
+form#group-settings-form #fields-sortable li span.items-link,
+form#group-settings-form #pages-sortable li span.items-link {
 	float:right;
 }
 /*
