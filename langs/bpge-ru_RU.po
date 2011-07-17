@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BuddyPress Groups Extras\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-12 13:59+0200\n"
-"PO-Revision-Date: 2011-07-12 13:59+0200\n"
+"POT-Creation-Date: 2011-07-17 12:54+0200\n"
+"PO-Revision-Date: 2011-07-17 12:59+0200\n"
 "Last-Translator: slaFFik <slaffik@list.ru>\n"
 "Language-Team: slaFFik <slaffik@list.ru>\n"
 "MIME-Version: 1.0\n"
@@ -68,6 +68,7 @@ msgid "Do you want to make <strong>\"%s\"</strong> page public (extra group info
 msgstr "Вы хотите сделать страницу <strong>\"%s\"</strong> доступной для просмотра (на этой странице также будет дополнительная информация о группе)?"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:197
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:203
 msgid "Show it"
 msgstr "Показывать"
 
@@ -75,219 +76,212 @@ msgstr "Показывать"
 msgid "Hide it"
 msgstr "Спрятать"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:215
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:327
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:375
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:202
+msgid "Please specify here the page name, where all fields will be displayed:"
+msgstr "Пожалуйста, укажите здесь название страницы, на которой будут отображаться все поля:"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:219
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:331
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:379
 msgid "Save Changes &rarr;"
 msgstr "Сохранить изменения &rarr;"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:233
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:257
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:237
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:261
 msgid "displayed"
-msgstr "Показывать"
+msgstr "отображается"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:233
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:257
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:237
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:261
 msgid "not displayed"
-msgstr "Не показывать"
+msgstr "не отображается"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:235
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:239
 msgid "Change its title, description etc"
 msgstr "Изменить заголовок, описание, видимость и т.д."
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:235
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:259
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:239
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:263
 msgid "Edit field"
 msgstr "Изменить"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:236
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:260
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:240
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:264
 msgid "Delete this item and all its content"
-msgstr "Удалить это поле и все его содержимое"
+msgstr "Удалить этот элемент и все его содержимое"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:236
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:260
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:240
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:264
 msgid "Delete"
 msgstr "Удалить"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:259
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:263
 msgid "Change its title, parent page etc"
-msgstr "Изменить заголовок, описание, видимость и т.д."
+msgstr "Изменить заголовок, родительскую страницу и т.д."
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:278
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:282
 msgid "Field Title"
 msgstr "Заголовок поля"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:282
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:286
 msgid "Field Type"
 msgstr "Тип поля"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:284
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:288
 msgid "Text Box"
 msgstr "Текстовая строка"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:285
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:289
 msgid "Multi-line Text Box"
 msgstr "Текстовый блок"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:286
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:290
 msgid "Checkboxes"
 msgstr "Чекбоксы"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:287
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:291
 msgid "Radio Buttons"
 msgstr "Радио-кнопки"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:289
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:293
 msgid "Drop Down Select Box"
 msgstr "Выпадающий список"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:295
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:299
 msgid "Add New"
 msgstr "Добавить опцию"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:299
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:303
 msgid "Field Description"
 msgstr "Описание поля"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:302
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:306
 msgid "Is this field required (will be marked as required on group Edit Details page)?"
-msgstr "Это поле является обязательным (будет отображаться на странице регистрации группы)?"
+msgstr "Это поле является обязательным (будет отображаться на странице редактирования данных группы)?"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:309
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:313
 msgid "Required"
 msgstr "Обязательное поле"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:310
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:314
 msgid "Not Required"
 msgstr "Не обязательное поле"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:312
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:316
 #, php-format
 msgid "Should this field be displayed for public on \"<u>%s</u>\" page?"
 msgstr "Должно ли это поле отображаться на странице \"<u>%s</u>\"?"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:319
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:367
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:323
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:371
 msgid "Display it"
 msgstr "Показывать"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:320
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:368
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:324
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:372
 msgid "Do NOT display it"
 msgstr "Не показывать"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:324
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:372
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:328
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:376
 msgid "Create New &rarr;"
 msgstr "Создать новое поле &rarr;"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:342
-#, fuzzy
-msgid "Page Title"
-msgstr "Заголовок поля"
-
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:346
+msgid "Page Title"
+msgstr "Заголовок страницы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:350
 msgid "Page Parent"
-msgstr ""
+msgstr "Родительская страница"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:348
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:352
 msgid "no parent"
-msgstr ""
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:356
-msgid "Only 1 level is allowed"
-msgstr ""
+msgstr "нет родителя"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:360
-#, fuzzy
+msgid "Only 1 level is allowed"
+msgstr "Разрешается только 1 уровень"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:364
 msgid "Should this page be displayed for public in group navigation?"
-msgstr "Должно ли это поле отображаться на странице \"<u>%s</u>\"?"
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:530
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:541
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:558
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:569
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:586
-msgid "General"
-msgstr "Общее"
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:531
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:542
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:559
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:570
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:587
-msgid "All Fields"
-msgstr "Все поля"
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:532
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:543
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:560
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:571
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:588
-#, fuzzy
-msgid "All Pages"
-msgstr "Все группы"
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:533
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:544
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:561
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:572
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:589
-#, fuzzy
-msgid "Add Field"
-msgstr "Добавить поле"
+msgstr "Должна ли эта страница отображаться для всех в навигации группы?"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:534
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:545
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:562
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:573
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:590
-#, fuzzy
-msgid "Add Page"
-msgstr "Добавить опцию"
+msgid "General"
+msgstr "Общее"
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:645
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:535
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:546
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:563
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:574
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:591
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:772
+msgid "All Fields"
+msgstr "Все поля"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:536
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:547
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:564
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:575
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:592
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:773
+msgid "All Pages"
+msgstr "Все страницы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:537
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:548
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:565
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:576
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:593
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:774
+msgid "Add Field"
+msgstr "Добавить поле"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:538
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:549
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:566
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:577
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:594
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:775
+msgid "Add Page"
+msgstr "Добавить страницу"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:649
 msgid "Group Extras settings were succefully updated."
 msgstr "Настройки успешно обновлены."
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:648
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:652
 msgid "New field was successfully added."
 msgstr "Новое поле успешно добавлено."
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:651
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:655
 msgid "The field was successfully updated."
 msgstr "Поле успешно обновлено."
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:654
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:658
 msgid "New page was successfully added."
-msgstr "Новое поле успешно добавлено."
+msgstr "Новая страница успешно добавлена."
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:657
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:661
 msgid "The page was successfully updated."
-msgstr "Поле успешно обновлено."
+msgstr "Страница успешно обновлена."
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:660
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:664
 msgid "Please create at least 1 extra field to show it in a list."
-msgstr "Пожалуйста, создайте как минимум 1 дополнительное поле."
+msgstr "Пожалуйста, создайте как минимум 1 дополнительное поле для отображения в списке."
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:663
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:667
 msgid "Please create at least 1 extra page to show it in a list."
-msgstr "Пожалуйста, создайте как минимум 1 дополнительное поле."
+msgstr "Пожалуйста, создайте как минимум 1 страницу для отображения в списке."
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:766
-#, fuzzy
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:770
 msgid "Manage Extras"
-msgstr "Расширения"
+msgstr "Управления расширениями"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:48
 msgid "Group Extras &rarr; General Settings"
@@ -298,28 +292,24 @@ msgid "Group Extras &rarr; Fields Management"
 msgstr "Расширения &rarr; Управление полями"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:54
-#, fuzzy
 msgid "Group Extras &rarr; Pages Management"
-msgstr "Расширения &rarr; Управление полями"
+msgstr "Расширения &rarr; Управление страницами"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:57
-#, fuzzy
 msgid "Group Extras &rarr; Add Field"
-msgstr "Расширения &rarr; Добавить новое поле"
+msgstr "Расширения &rarr; Добавить поле"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:60
 msgid "Group Extras &rarr; Edit Field"
 msgstr "Расширения &rarr; Редактирование поля"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:63
-#, fuzzy
 msgid "Group Extras &rarr; Add Page"
-msgstr "Расширения &rarr; Добавить новое поле"
+msgstr "Расширения &rarr; Добавить страницу"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:66
-#, fuzzy
 msgid "Group Extras &rarr; Edit Page"
-msgstr "Расширения &rarr; Редактирование поля"
+msgstr "Расширения &rarr; Редактирование страницы"
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:69
 msgid "Description"

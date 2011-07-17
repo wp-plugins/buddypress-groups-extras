@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BuddyPress Groups Extras\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-12 13:59+0200\n"
-"PO-Revision-Date: 2011-07-12 13:59+0200\n"
+"POT-Creation-Date: 2011-07-17 12:54+0200\n"
+"PO-Revision-Date: 2011-07-17 12:54+0200\n"
 "Last-Translator: slaFFik <slaffik@list.ru>\n"
 "Language-Team: slaFFik <slaffik@list.ru>\n"
 "MIME-Version: 1.0\n"
@@ -68,6 +68,7 @@ msgid "Do you want to make <strong>\"%s\"</strong> page public (extra group info
 msgstr ""
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:197
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:203
 msgid "Show it"
 msgstr ""
 
@@ -75,163 +76,135 @@ msgstr ""
 msgid "Hide it"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:215
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:327
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:375
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:202
+msgid "Please specify here the page name, where all fields will be displayed:"
+msgstr ""
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:219
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:331
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:379
 msgid "Save Changes &rarr;"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:233
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:257
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:237
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:261
 msgid "displayed"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:233
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:257
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:237
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:261
 msgid "not displayed"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:235
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:239
 msgid "Change its title, description etc"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:235
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:259
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:239
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:263
 msgid "Edit field"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:236
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:260
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:240
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:264
 msgid "Delete this item and all its content"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:236
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:260
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:240
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:264
 msgid "Delete"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:259
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:263
 msgid "Change its title, parent page etc"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:278
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:282
 msgid "Field Title"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:282
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:286
 msgid "Field Type"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:284
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:288
 msgid "Text Box"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:285
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:289
 msgid "Multi-line Text Box"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:286
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:290
 msgid "Checkboxes"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:287
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:291
 msgid "Radio Buttons"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:289
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:293
 msgid "Drop Down Select Box"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:295
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:299
 msgid "Add New"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:299
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:303
 msgid "Field Description"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:302
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:306
 msgid "Is this field required (will be marked as required on group Edit Details page)?"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:309
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:313
 msgid "Required"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:310
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:314
 msgid "Not Required"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:312
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:316
 #, php-format
 msgid "Should this field be displayed for public on \"<u>%s</u>\" page?"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:319
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:367
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:323
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:371
 msgid "Display it"
-msgstr ""
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:320
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:368
-msgid "Do NOT display it"
 msgstr ""
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:324
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:372
+msgid "Do NOT display it"
+msgstr ""
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:328
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:376
 msgid "Create New &rarr;"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:342
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:346
 msgid "Page Title"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:346
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:350
 msgid "Page Parent"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:348
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:352
 msgid "no parent"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:356
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:360
 msgid "Only 1 level is allowed"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:360
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:364
 msgid "Should this page be displayed for public in group navigation?"
-msgstr ""
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:530
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:541
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:558
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:569
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:586
-msgid "General"
-msgstr ""
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:531
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:542
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:559
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:570
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:587
-msgid "All Fields"
-msgstr ""
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:532
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:543
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:560
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:571
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:588
-msgid "All Pages"
-msgstr ""
-
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:533
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:544
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:561
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:572
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:589
-msgid "Add Field"
 msgstr ""
 
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:534
@@ -239,38 +212,74 @@ msgstr ""
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:562
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:573
 #: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:590
+msgid "General"
+msgstr ""
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:535
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:546
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:563
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:574
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:591
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:772
+msgid "All Fields"
+msgstr ""
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:536
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:547
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:564
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:575
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:592
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:773
+msgid "All Pages"
+msgstr ""
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:537
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:548
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:565
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:576
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:593
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:774
+msgid "Add Field"
+msgstr ""
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:538
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:549
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:566
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:577
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:594
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:775
 msgid "Add Page"
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:645
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:649
 msgid "Group Extras settings were succefully updated."
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:648
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:652
 msgid "New field was successfully added."
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:651
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:655
 msgid "The field was successfully updated."
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:654
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:658
 msgid "New page was successfully added."
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:657
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:661
 msgid "The page was successfully updated."
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:660
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:664
 msgid "Please create at least 1 extra field to show it in a list."
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:663
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:667
 msgid "Please create at least 1 extra page to show it in a list."
 msgstr ""
 
-#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:766
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge-loader.php:770
 msgid "Manage Extras"
 msgstr ""
 

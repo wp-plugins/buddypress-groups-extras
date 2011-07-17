@@ -198,6 +198,10 @@ class BPGE extends BP_Group_Extension {
 			echo '<input type="radio" value="private" '.$private_checked.' name="group-extras-display"> '. __('Hide it', 'bpge');
 		echo '</p>';
 		
+		echo '<p>';
+			echo '<label for="group_extras_display">'.__('Please specify here the page name, where all fields will be displayed:','bpge').'</label>';
+			echo '<input type="radio" value="public" '.$public_checked.' name="group-extras-display"> '.__('Show it', 'bpge').'<br />';
+		echo '</p>';
 		echo '<hr />';
 		
 		/*
@@ -763,7 +767,14 @@ class BPGE extends BP_Group_Extension {
 	// Display a link for group/site admins in BuddyBar when on group page
 	function buddybar_admin_link(){
 		global $bp;
-		echo '<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '">'. __( "Manage Extras", 'bpge' ) .'</a></li>';
+		echo '<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '">'. __( 'Manage Extras', 'bpge' ) .'</a>
+					<ul>
+						<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields/">'.__('All Fields', 'bpge' ) .'</a></li>
+						<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages/">'.__('All Pages', 'bpge' ) .'</a></li>
+						<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields-manage/">'.__('Add Field', 'bpge' ) .'</a></li>
+						<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages-manage/">'.__('Add Page', 'bpge' ) .'</a></li>
+					</ul>
+			</li>';
 	}
 	
 	// Load if was not already loaded
