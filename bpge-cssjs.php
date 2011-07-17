@@ -32,11 +32,17 @@ function bpge_js_localize(){ ?>
 add_action('wp_print_styles', 'bpge_css_all');
 function bpge_css_all() {
 	global $bp;
-
-	if (is_admin())
-		wp_enqueue_style('BPGE_ADMIN_CSS', WP_PLUGIN_URL.'/buddypress-groups-extras/_inc/admin-styles.css');
 		
 	if ( $bp->current_component == $bp->groups->slug && $bp->is_single_item && 'admin' == $bp->current_action && $bp->action_variables[0] == 'extras' ) 
 		wp_enqueue_style('BPGE_EXTRA_CSS', WP_PLUGIN_URL.'/buddypress-groups-extras/_inc/extra-styles.css');
 		
+}
+
+add_action('admin_head', 'bpge_css_admin');
+function bpge_css_admin(){
+	global $post_type; 
+	
+	if (($_GET['post_type'] == 'gpages') || ($post_type == 'gpages')) {
+		echo "<link type='text/css' rel='stylesheet' href='" . WP_PLUGIN_URL.'/buddypress-groups-extras/_inc/admin-styles.css' . "' />";
+	}
 }

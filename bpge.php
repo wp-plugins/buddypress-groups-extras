@@ -28,16 +28,67 @@ function bpge_load_textdomain() {
 }
 
 
-add_action( 'bp_loaded', 'bpge_load' );
+add_action( 'bp_init', 'bpge_load' );
 function bpge_load(){
 	global $bp;
+	
 	require ( dirname(__File__) . '/bpge-cssjs.php');
 	if ( is_admin()){
 		require ( dirname(__File__) . '/bpge-admin.php');
+		
 	}
 	$bpge = get_option('bpge');
 	if ( (is_string($bpge['groups']) && $bpge['groups'] == 'all' ) || (is_array($bpge['groups']) && in_array($bp->groups->current_group->id, $bpge['groups'])) ){
 		require ( dirname(__File__) . '/bpge-loader.php');
+	}
+	if(is_super_admin()){
+		bpge_register_groups_pages();
+	}
+
+}
+// Register groups pages post type, where all their content will be stored
+function bpge_register_groups_pages(){
+	$labels = array(
+		'name' => _x('Groups Pages', 'post type general name'),
+		'singular_name' => _x('Groups Page', 'post type singular name'),
+		'add_new' => _x('Add New', 'gpages'),
+		'add_new_item' => __('Add New Page'),
+		'edit_item' => __('Edit Page'),
+		'new_item' => __('New Page'),
+		'view_item' => __('View Page'),
+		'search_items' => __('Search Groups Pages'),
+		'not_found' =>  __('No groups pages found'),
+		'not_found_in_trash' => __('No groups pages found in Trash'), 
+		'parent_item_colon' => '',
+		'menu_name' => 'Groups Pages'
+	);
+	$args = array(
+		'labels' => $labels,
+		'description' => 'Displaying pages that were created in all community groups',
+		'public' => true,
+		'show_in_menu' => true, 
+		'exclude_from_search' => true, 
+		'show_in_nav_menus' => false, 
+		'menu_position' => 100,
+		'hierarchical' => true,
+		'query_var' => true,
+		'rewrite' => false,
+		'capability_type' => 'page',
+		'supports' => array('title', 'editor', 'custom-fields', 'page-attributes', 'thumbnail', 'comments')
+	); 
+	register_post_type('gpages',$args);
+}
+// hide add new menu and redirect from it to the whole list - do not allow admin to add manually
+add_action('admin_menu', 'bpge_gpages_hide_add_new');
+function bpge_gpages_hide_add_new() {
+	global $submenu;
+	unset($submenu['edit.php?post_type=gpages'][10]);
+}
+add_action('admin_menu','bpge_gpages_redirect_to_all');
+function bpge_gpages_redirect_to_all() {
+	$result = stripos($_SERVER['REQUEST_URI'], 'post-new.php?post_type=gpages');
+	if ($result !== false) {
+		wp_redirect(get_option('siteurl') . '/wp-admin/edit.php?post_type=gpages');
 	}
 }
 
@@ -89,7 +140,6 @@ if(!function_exists('print_var')){
 			die;
 	}
 }
-
 add_action('bp_adminbar_menus', 'bpge_queries');
 function bpge_queries(){
     echo '<li class="no-arrow"><a>'.get_num_queries() . ' queries | ';
