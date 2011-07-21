@@ -15,7 +15,7 @@ class BPGE extends BP_Group_Extension {
 
 	var $create_step_position = 5;
 	var $nav_item_position = 15;
-	var $nav_gpages_position = 18;
+	var $nav_gpages_position = 12;
 
 	var $enable_create_step = false; // will set to true in future version
 	var $enable_nav_item = false;
@@ -119,6 +119,7 @@ class BPGE extends BP_Group_Extension {
 	function gpages(){
 		add_action( 'bp_before_group_body', array( &$this, 'gpages_screen_nav' ) );
 		add_action( 'bp_template_content', array( &$this, 'gpages_screen_content' ) );
+		do_action('bpge_gpages', $this);
 		bp_core_load_template( apply_filters( 'bp_core_template_plugin', 'groups/single/plugins' ) );
 	}
 	
@@ -127,29 +128,36 @@ class BPGE extends BP_Group_Extension {
 		$pages = $this->get_all_gpages('publish');
 		if (empty($bp->action_variables)){
 			global $wpdb;
-			$sql = "SELECT `ID` FROM {$wpdb->prefix}posts 
+			$sql = "SELECT `post_name` FROM {$wpdb->prefix}posts 
 						WHERE `post_parent` = {$bp->groups->current_group->extras['gpage_id']} AND `post_type` = 'gpages'
 						ORDER BY `menu_order` ASC
 						LIMIT 1";
 			$bp->action_variables[0] = $wpdb->get_var($wpdb->prepare($sql));
 		}
-		echo '<div role="navigation" id="subnav" class="item-list-tabs no-ajax">
-			<ul>';
-				foreach($pages as $page){
-					echo '<li '. (($bp->action_variables[0] == $page->ID) ? 'class="current"' : '') .'>
-						<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'gpages/'. $page->ID.'">'.$page->post_title.'</a>
-					</li>';
-				}
-			echo '</ul>
-		</div>';
+		
+		if ( count($pages) > 1 ) {
+			echo '<div role="navigation" id="subnav" class="item-list-tabs no-ajax">
+				<ul>';
+						foreach($pages as $page){
+							echo '<li '. (($bp->action_variables[0] == $page->post_name) ? 'class="current"' : '') .'>
+								<a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'gpages/'. $page->post_name.'">'.$page->post_title.'</a>
+							</li>';
+						}
+					do_action('bpge_gpages_nav_in', $this, $pages);
+				echo '</ul>
+			</div>';
+		}
+		do_action('bpge_gpages_nav_after', $this, $pages);
 	}
 	
 	function gpages_screen_content(){
-		global $bp;
-
-		$page = get_post($bp->action_variables[0]);
+		global $bp, $wpdb;
+		$sql = "SELECT * FROM {$wpdb->prefix}posts WHERE `post_name` = '{$bp->action_variables[0]}'";
+		$page = $wpdb->get_row($wpdb->prepare($sql));
+		//$page = get_post($bp->action_variables[0]);
+		do_action('bpge_gpages_content_display', $this, $page);
 		echo '<div class="gpage">';
-			echo $page->post_content;
+			echo apply_filters('bpge_gpages_content',$page->post_content);
 		echo '</div>';
 	}
 	
@@ -201,7 +209,7 @@ class BPGE extends BP_Group_Extension {
 			if ( ! empty($field->desc) ) echo '<p class="description">' . $field->desc . '</p>';
 			$req = false;
 		}
-		
+		do_action('bpge_group_fields_edit', $this, $fields);
 	}
 	
 	// Save extra fields in groupmeta
@@ -228,13 +236,14 @@ class BPGE extends BP_Group_Extension {
 						}
 						groups_update_groupmeta($group_id, $key, $value);
 					}
+					do_action('bpge_group_fields_save', $this, $to_save);
 				}
 			}
 		}
 	}
 	
 	function widget_display() {
-		echo '';
+		do_action('bpge_widget_display',$this);
 		//echo 'BP_Group_Extension::widget_display()';
 	}
 
@@ -272,7 +281,7 @@ class BPGE extends BP_Group_Extension {
 		echo '</p>';
 		
 		echo '<p>';
-			echo '<label for="group_extras_display">'.sprintf(__('Do you want to make <strong>"%s"</strong> page public (extra group information will be displayed on this page)?','bpge'), $this->nav_item_name).'</label>';
+			echo '<label for="group_extras_display">'.sprintf(__('Do you want to make <strong>"%s"</strong> page public? Everyone will see this page.','bpge'), $this->nav_item_name).'</label>';
 			echo '<input type="radio" value="public" '.$public_checked.' name="group-extras-display"> '.__('Show it', 'bpge').'<br />';
 			echo '<input type="radio" value="private" '.$private_checked.' name="group-extras-display"> '. __('Hide it', 'bpge');
 		echo '</p>';
@@ -314,7 +323,7 @@ class BPGE extends BP_Group_Extension {
 		echo '<ul id="fields-sortable">';
 			foreach($fields as $field){
 				echo '<li id="position_'.str_replace('_', '', $field->slug).'" class="default">
-								<strong title="' . $field->desc . '">' . $field->title .'</strong> &rarr; ' . $field->type . ' &rarr; ' . (($field->display == 1)?__('displayed','bpge'):__('not displayed','bpge')) . '
+								<strong title="' . $field->desc . '">' . $field->title .'</strong> &rarr; ' . $field->type . ' &rarr; ' . (($field->display == 1)?__('displayed','bpge'):__('<u>not</u> displayed','bpge')) . '
 								<span class="items-link">
 									<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug . '/fields-manage/?edit=' . $field->slug . '" class="button" title="'.__('Change its title, description etc','bpge').'">'.__('Edit field', 'bpge').'</a>&nbsp;
 									<a href="#" class="button delete_field" title="'.__('Delete this item and all its content', 'bpge').'">'.__('Delete', 'bpge').'</a>
@@ -350,7 +359,7 @@ class BPGE extends BP_Group_Extension {
 		echo '<ul id="pages-sortable">';
 			foreach($pages as $page){
 				echo '<li id="position_'.$page->ID.'" class="default">
-								<strong>' . $page->post_title .'</strong> &rarr; ' . (($page->post_status == 'publish')?__('displayed','bpge'):__('not displayed','bpge')) . '
+								<strong>' . $page->post_title .'</strong> &rarr; ' . (($page->post_status == 'publish')?__('displayed','bpge'):__('<u>not</u> displayed','bpge')) . '
 								<span class="items-link">
 									<a href="' . bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug . '/pages-manage/?edit=' . $page->ID . '" class="button" title="'.__('Change its title, content etc','bpge').'">'.__('Edit page', 'bpge').'</a>&nbsp;
 									<a href="#" class="button delete_page" title="'.__('Delete this item and all its content', 'bpge').'">'.__('Delete', 'bpge').'</a>
@@ -416,6 +425,8 @@ class BPGE extends BP_Group_Extension {
 				echo '<input type="radio" value="0" '.$not_disp.' name="extra-field-display"> '. __('Do NOT display it', 'bpge');
 		echo '</p>';
 		
+		do_action('bpge_field_manage', $this, $field);
+		
 		if (empty($field)){
 			echo '<p><input type="submit" name="save_fields_add" id="save" value="'.__('Create New &rarr;','bpge').'"></p>';
 		}else{
@@ -450,6 +461,8 @@ class BPGE extends BP_Group_Extension {
 				echo '<input type="radio" value="draft" '.($page->post_status == 'publish'?'':$checked).' name="extra-page-status"> '. __('Do NOT display it', 'bpge');
 		echo '</p>';
 		
+		do_action('bpge_page_manage', $this, $page);
+		
 		if (empty($page)){
 			echo '<p><input type="submit" name="save_pages_add" id="save" value="'.__('Create New &rarr;','bpge').'"></p>';
 		}else{
@@ -480,6 +493,8 @@ class BPGE extends BP_Group_Extension {
 				$meta['gpage_name'] = stripslashes(strip_tags($_POST['group-gpages-display-name']));
 				$meta['display_gpages'] = $_POST['group-gpages-display'];
 				
+				do_action('bpge_save_general', $this, $meta);
+				
 				// Save into groupmeta table
 				groups_update_groupmeta( $bp->groups->current_group->id, 'bpge', $meta );
 				
@@ -500,17 +515,19 @@ class BPGE extends BP_Group_Extension {
 					$fields = array();
 				
 				$new = new Stdclass;
-				$new->title = htmlspecialchars(strip_tags($_POST['extra-field-title']));
-				$new->slug = str_replace('-', '_', sanitize_title($new->title)); // will be used as unique identifier
-				$new->desc = htmlspecialchars(strip_tags($_POST['extra-field-desc']));
-				$new->type = $_POST['extra-field-type'];
-				$new->required = $_POST['extra-field-required'];
-				$new->display = $_POST['extra-field-display'];
+				$new->title = apply_filters('bpge_new_field_title', htmlspecialchars(strip_tags($_POST['extra-field-title'])));
+				$new->slug = apply_filters('bpge_new_field_slug', str_replace('-', '_', sanitize_title($new->title))); // will be used as unique identifier
+				$new->desc = apply_filters('bpge_new_field_desc', htmlspecialchars(strip_tags($_POST['extra-field-desc'])));
+				$new->type = apply_filters('bpge_new_field_type', $_POST['extra-field-type']);
+				$new->required = apply_filters('bpge_new_field_required', $_POST['extra-field-required']);
+				$new->display = apply_filters('bpge_new_field_display', $_POST['extra-field-display']);
 				if(!empty($_POST['options'])){
 					foreach($_POST['options'] as $option){
 						$new->options[] = htmlspecialchars(strip_tags($option));
 					}
 				}
+				
+				do_action('bpge_save_new_field', $this, $new);
 				
 				// To the end of an array of current fields
 				array_push($fields, $new);
@@ -539,14 +556,17 @@ class BPGE extends BP_Group_Extension {
 					'comment_status' => 'open',
 					'ping_status' => 'open',
 					'post_author' => $admin->ID,
-					'post_content' => $_POST['extra-page-content'],
-					'post_parent' => $bp->groups->current_group->extras['gpage_id'],
-					'post_status' => $_POST['extra-page-status'],
-					'post_title' => $_POST['extra-page-title'],
+					'post_title' => apply_filters('bpge_new_page_title', $_POST['extra-page-title']),
+					'post_content' => apply_filters('bpge_new_page_content', $_POST['extra-page-content']),
+					'post_parent' => apply_filters('bpge_new_page_parent', $bp->groups->current_group->extras['gpage_id']),
+					'post_status' => apply_filters('bpge_new_page_status', $_POST['extra-page-status']),
 					'menu_order' => count($this->get_all_gpages()) + 1,
 					'post_type' => 'gpages'
 				);
+				
+				do_action('bpge_save_new_page_before', $this, $page);
 				$page_id = wp_insert_post($page);
+				do_action('bpge_save_new_page_after', $this, $page_id);
 				
 				$this->notices('added_page');
 				
@@ -563,13 +583,16 @@ class BPGE extends BP_Group_Extension {
 				$fields = $this->get_all_items('fields', $bp->groups->current_group->id);
 				foreach( $fields as $field ){
 					if ( $_POST['extra-field-slug'] == $field->slug ){
-						$field->title = htmlspecialchars(strip_tags($_POST['extra-field-title']));
-						$field->desc = htmlspecialchars(strip_tags($_POST['extra-field-desc']));
-						$field->required = $_POST['extra-field-required'];
-						$field->display = $_POST['extra-field-display'];
+						$field->title = apply_filters('bpge_updated_field_title', htmlspecialchars(strip_tags($_POST['extra-field-title'])));
+						$field->desc = apply_filters('bpge_updated_field_desc', htmlspecialchars(strip_tags($_POST['extra-field-desc'])));
+						$field->required = apply_filters('bpge_updated_field_required', $_POST['extra-field-required']);
+						$field->display = apply_filters('bpge_updated_field_display', $_POST['extra-field-display']);
 					}
 					$updated[] = $field;
 				}
+				
+				do_action('bpge_save_updated_field', $this, $updated);
+				
 				// Save into groupmeta table
 				$updated = json_encode($updated);
 				groups_update_groupmeta( $bp->groups->current_group->id, 'bpge_fields', $updated );
@@ -586,11 +609,14 @@ class BPGE extends BP_Group_Extension {
 				if ( !check_admin_referer( 'groups_edit_group_extras' ) )
 					return false;
 					
-				$post['ID'] = $_POST['extra-page-id'];
-				$post['post_title'] = $_POST['extra-page-title'];
-				$post['post_content'] = $_POST['extra-page-content'];
-				$post['post_status'] = $_POST['extra-page-status'];
-				$updated = wp_update_post($post);
+				$page['ID'] = $_POST['extra-page-id'];
+				$page['post_title'] = apply_filters('bpge_updated_page_title', $_POST['extra-page-title']);
+				$page['post_content'] = apply_filters('bpge_updated_page_content', $_POST['extra-page-content']);
+				$page['post_status'] = apply_filters('bpge_updated_page_status', $_POST['extra-page-status']);
+				
+				do_action('bpge_save_updated_page_before', $this, $page);
+				$updated = wp_update_post($page);
+				do_action('bpge_save_updated_page_after', $this, $updated);
 				
 				$this->notices('edited_page');
 				
@@ -611,8 +637,9 @@ class BPGE extends BP_Group_Extension {
 							<a href="'. $group_link .'/fields/" class="button">'. __('All Fields', 'bpge') .'</a>
 							<a href="'. $group_link .'/pages/" class="button">'. __('All Pages', 'bpge') .'</a>
 							<a href="'. $group_link .'/fields-manage/'.'" class="button">'. __('Add Field', 'bpge') .'</a>
-							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>
-						</span>';
+							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>';
+							do_action('bpge_group_admin_head_nav', $cur, $group_link, $this);
+						echo '</span>';
 				break;
 			
 			case 'fields':
@@ -622,8 +649,9 @@ class BPGE extends BP_Group_Extension {
 							<a href="'. $group_link .'/fields/" class="button active">'. __('All Fields', 'bpge') .'</a>
 							<a href="'. $group_link .'/pages/" class="button">'. __('All Pages', 'bpge') .'</a>
 							<a href="'. $group_link .'/fields-manage/'.'" class="button">'. __('Add Field', 'bpge') .'</a>
-							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>
-						</span>';
+							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>';
+							do_action('bpge_group_admin_head_nav', $cur, $group_link, $this);
+						echo '</span>';
 				break;
 			
 			case 'fields-manage':
@@ -639,8 +667,9 @@ class BPGE extends BP_Group_Extension {
 							<a href="'. $group_link . '/fields/" class="button">'. __('All Fields', 'bpge') .'</a>
 							<a href="'. $group_link . '/pages/" class="button">'. __('All Pages', 'bpge') .'</a>
 							<a href="'. $group_link . '/fields-manage/" class="button ' . $active . '">'. __('Add Field', 'bpge') .'</a>
-							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>
-						</span>';
+							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>';
+							do_action('bpge_group_admin_head_nav', $cur, $group_link, $this);
+						echo '</span>';
 				break;
 				
 			case 'pages':
@@ -650,8 +679,9 @@ class BPGE extends BP_Group_Extension {
 							<a href="'. $group_link .'/fields/" class="button">'. __('All Fields', 'bpge') .'</a>
 							<a href="'. $group_link .'/pages/" class="button active">'. __('All Pages', 'bpge') .'</a>
 							<a href="'. $group_link .'/fields-manage/'.'" class="button">'. __('Add Field', 'bpge') .'</a>
-							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>
-						</span>';
+							<a href="'. $group_link .'/pages-manage/'.'" class="button">'. __('Add Page', 'bpge') .'</a>';
+							do_action('bpge_group_admin_head_nav', $cur, $group_link, $this);
+						echo '</span>';
 				break;
 			
 			case 'pages-manage':
@@ -667,10 +697,14 @@ class BPGE extends BP_Group_Extension {
 							<a href="'. $group_link . '/fields/" class="button">'. __('All Fields', 'bpge') .'</a>
 							<a href="'. $group_link . '/pages/" class="button">'. __('All Pages', 'bpge') .'</a>
 							<a href="'. $group_link . '/fields-manage/" class="button">'. __('Add Field', 'bpge') .'</a>
-							<a href="'. $group_link .'/pages-manage/'.'" class="button ' . $active . '">'. __('Add Page', 'bpge') .'</a>
-						</span>';
+							<a href="'. $group_link .'/pages-manage/'.'" class="button ' . $active . '">'. __('Add Page', 'bpge') .'</a>';
+							do_action('bpge_group_admin_head_nav', $cur, $group_link, $this);
+						echo '</span>';
 				break;
 		}
+		
+		echo '<div class="clear">&nbsp;</div>';
+		
 		do_action('bpge_extra_menus', $cur);
 	}
 	
@@ -691,7 +725,7 @@ class BPGE extends BP_Group_Extension {
 			$items = json_decode($items);
 		}
 		
-		return $items;
+		return apply_filters('bpge_get_all_items', $items);
 	}
 	
 	// Get item (field or page) by slug - reusable
@@ -704,6 +738,9 @@ class BPGE extends BP_Group_Extension {
 		$items = array();
 		$searched = array();
 		
+		$type = apply_filters('bpge_items_by_slug_type', $type);
+		$slug = apply_filters('bpge_items_by_slug_slug', $slug);
+		
 		if ( $type == 'field'){
 			$items = $this->get_all_items('fields', $bp->groups->current_group->id);
 		}elseif ( $type == 'page'){
@@ -715,7 +752,7 @@ class BPGE extends BP_Group_Extension {
 				$searched = $item;
 		}
 		
-		return $searched;
+		return apply_filters('bpge_items_by_slug', $searched);
 	}
 	
 	// Notices about user actions
@@ -743,6 +780,7 @@ class BPGE extends BP_Group_Extension {
 				echo '<div class="" id="message"><p>' . __('Please create at least 1 extra page to show it in a list.', 'bpge') . '</p></div>';
 				break;
 		}
+		do_action('bpge_notices', $type);
 	}
 	
 	// create a storage fro groups pages
@@ -782,6 +820,8 @@ class BPGE extends BP_Group_Extension {
 	function ajax(){
 		global $bp;
 		$method = isset($_POST['method']) ? $_POST['method'] : '';
+		
+		do_action('bpge_ajax', $this, $method);
 		
 		switch($method){
 			case 'reorder_fields':
@@ -848,11 +888,13 @@ class BPGE extends BP_Group_Extension {
 	
 	// Creation step - enter the data
 	function create_screen() {
+		do_action('bpge_create_screen', $this);
 		//echo 'BP_Group_Extension::create_screen()';
 	}
 
 	// Creation step - save the data
 	function create_screen_save() {
+		do_action('bpge_create_save', $this);
 		//echo 'BP_Group_Extension::create_screen_save()';
 	}
 
@@ -864,7 +906,9 @@ class BPGE extends BP_Group_Extension {
 						<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields/">'.__('All Fields', 'bpge' ) .'</a></li>
 						<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages/">'.__('All Pages', 'bpge' ) .'</a></li>
 						<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields-manage/">'.__('Add Field', 'bpge' ) .'</a></li>
-						<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages-manage/">'.__('Add Page', 'bpge' ) .'</a></li>
+						<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages-manage/">'.__('Add Page', 'bpge' ) .'</a></li>';
+						do_action('bpge_buddybar_admin_links', $this);
+						echo '
 					</ul>
 			</li>';
 	}

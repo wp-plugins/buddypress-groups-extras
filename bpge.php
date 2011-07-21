@@ -7,7 +7,7 @@ Version: 1.2
 Author: slaFFik
 Author URI: http://cosydale.com/
 */
-define ('BPGE_VERSION', '1.0');
+define ('BPGE_VERSION', '1.2');
 
 register_activation_hook( __FILE__, 'bpge_activation');
 //register_deactivation_hook( __FILE__, 'bpge_deactivation');

@@ -114,7 +114,7 @@ $columns[ $this->pagehook ] = 1;
 		<table id="bp-gtm-admin-table" class="widefat link-group">
 			<thead>
 				<tr class="header">
-					<td colspan="2"><p><?php _e('Which groups do you allow to create custom fields?', 'bpge') ?></p></td>
+					<td colspan="2"><p><?php _e('Which groups do you allow to create custom fields and pages?', 'bpge') ?></p></td>
 				</tr>
 			</thead>
 			<tbody id="the-list">
