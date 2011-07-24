@@ -20,7 +20,7 @@ class BPGE_ADMIN{
 			}else{
 				$columns[ $this->pagehook ] = 2;
 			}
-$columns[ $this->pagehook ] = 1;
+			$columns[ $this->pagehook ] = 1;
 		}
 		return $columns;
 	}

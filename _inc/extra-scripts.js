@@ -31,6 +31,20 @@ jQuery(document).ready(function(){
 	});
 	jQuery( "#pages-sortable" ).disableSelection();
 	
+	// sorting nav
+	jQuery("#nav-sortable").sortable({
+		placeholder: "highlight",
+		update: function(event, ui){
+			jQuery.post( ajaxurl, {
+				action: 'bpge',
+				method: 'reorder_nav',
+				page_order: jQuery(this).sortable('serialize')
+			},
+			function(response){}); 
+		}
+	});
+	jQuery( "#nav-sortable" ).disableSelection();
+	
 	// delete field
 	jQuery("#fields-sortable li span a.delete_field").click(function(e){
 		e.preventDefault();
