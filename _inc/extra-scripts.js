@@ -35,12 +35,7 @@ jQuery(document).ready(function(){
 	jQuery("#nav-sortable").sortable({
 		placeholder: "highlight",
 		update: function(event, ui){
-			jQuery.post( ajaxurl, {
-				action: 'bpge',
-				method: 'reorder_nav',
-				page_order: jQuery(this).sortable('serialize')
-			},
-			function(response){}); 
+			jQuery('input[name="bpge_group_nav_position"]').val(jQuery(this).sortable('serialize'));
 		}
 	});
 	jQuery( "#nav-sortable" ).disableSelection();

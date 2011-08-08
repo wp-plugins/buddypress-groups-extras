@@ -156,10 +156,11 @@ class BPGE extends BP_Group_Extension {
         $sql = "SELECT * FROM {$wpdb->prefix}posts WHERE `post_name` = '{$bp->action_variables[0]}'";
         $page = $wpdb->get_row($wpdb->prepare($sql));
         //$page = get_post($bp->action_variables[0]);
-        do_action('bpge_gpages_content_display', $this, $page);
+        do_action('bpge_gpages_content_display_before', $this, $page);
         echo '<div class="gpage">';
             echo apply_filters('bpge_gpages_content',$page->post_content);
         echo '</div>';
+		do_action('bpge_gpages_content_display_after', $this, $page);
     }
     
     // Display exra fields on edit group details page
@@ -318,6 +319,7 @@ class BPGE extends BP_Group_Extension {
                         <strong>' . $nav['name'] .'</strong>
                     </li>';
             }
+			echo '<input type="hidden" name="bpge_group_nav_position" value=""/>';
         echo '</ul>';
         
         echo '<div class="clear">&nbsp;</div>';
@@ -510,9 +512,28 @@ class BPGE extends BP_Group_Extension {
                 $meta['gpage_name'] = stripslashes(strip_tags($_POST['group-gpages-display-name']));
                 $meta['display_gpages'] = $_POST['group-gpages-display'];
                 
+				// now save nav order
+                // preparing vars
+                parse_str($_POST['bpge_group_nav_position'], $page_order );
+                //print_var($page_order);
+                $nav_old = $bp->bp_options_nav[$bp->groups->current_group->slug];
+                $order = array();
+                // update menu_order for each nav item
+				$pos = 1;
+                foreach($page_order['position'] as $index => $old_position){
+                    foreach($nav_old as $nav){
+                        if ($nav['position'] == $old_position){
+                            $order[$nav['slug']] = $pos;
+						}
+						$pos++;
+                    }
+                }
+                // save to DB
+                groups_update_groupmeta($bp->groups->current_group->id, 'bpge_nav_order', $order);
+				
                 do_action('bpge_save_general', $this, $meta);
                 
-                // Save into groupmeta table
+                // Save into groupmeta table some general settings
                 groups_update_groupmeta( $bp->groups->current_group->id, 'bpge', $meta );
                 
                 $this->notices('settings_updated');
@@ -887,27 +908,6 @@ class BPGE extends BP_Group_Extension {
                         'menu_order' => $index
                     ));
                 }
-                die('saved');
-                break;
-                
-            case 'reorder_nav':
-                // preparing vars
-                parse_str($_POST['page_order'], $page_order );
-                print_var($page_order);
-                $nav_old = $bp->bp_options_nav[$bp->groups->current_group->slug];
-                $order = array();
-                print_var($nav_old);
-                // update menu_order for each nav item
-                foreach($page_order['position'] as $index => $old_position){
-                    foreach($nav_old as $nav){
-                        if ($nav['position'] == $old_position)
-                            $order[$nav['slug']] = $index + 1;
-                    }
-                }
-                
-                // save to DB
-                groups_update_groupmeta($bp->groups->current_group->id, 'bpge_nav_order', $order);
-                
                 die('saved');
                 break;
                 

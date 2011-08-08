@@ -52,38 +52,36 @@ function bpge_load(){
 // reorder group nav links
 add_action('bp_init', 'group_nav_order');
 function group_nav_order(){
-    global $bp, $bpge;
+    global $bp;
 
     if ( $bp->current_component == $bp->groups->slug && $bp->is_single_item){
         $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
+		//print_var($order);
         if (!empty($order) && is_array($order)){
             foreach($order as $slug => $position){
                 $bp->bp_options_nav[$bp->groups->current_group->slug][$slug]['position'] = $position;
             }
         }
+		//$bp->current_action = reset(array_flip($order));
         do_action('group_nav_order');
     }
+
     //print_var($bp->groups->current_group);
 }
 
-add_filter('component_default_subnav','def_landing_page');
-function def_landing_page($default){
+add_filter('bp_default_component_subnav','def_landing_page', 10, 2);
+function def_landing_page($default_subnav_slug, $r){
     global $bp;
     if ( $bp->current_component == $bp->groups->slug && $bp->is_single_item){
         // get all pages - take the first
         $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
+        //print_var($order);
+		$default_subnav_slug = reset(array_flip($order));
 
-        foreach($order as $slug => $order){
-            if (!$found){
-                $default = $slug;
-            }
-            //if()
-            $found = true;
-        }
-
-        //$bp->current_action = $default;
+        //$bp->current_action = $default_subnav_slug;
     }
-    return $default;
+	//echo $default_subnav_slug;
+    return $default_subnav_slug;
 }
 
 // Register groups pages post type, where all their content will be stored
@@ -168,7 +166,7 @@ function bpge_names($name = 'name'){
 /*
  * Personal debug functions
  */
-add_action('bp_adminbar_menus', 'bpge_queries');
+//add_action('bp_adminbar_menus', 'bpge_queries');
 function bpge_queries(){
     echo '<li class="no-arrow"><a>'.get_num_queries() . ' queries | ';
     echo round(memory_get_usage() / 1024 / 1024, 2) . 'Mb</a></li>';
