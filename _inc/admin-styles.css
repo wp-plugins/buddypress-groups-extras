@@ -27,6 +27,15 @@ form#bpge-form ul.sets li span.desc{
 	width:55%;
 }
 
+form#bpge-form ul.sets li ul.fields{
+	display:none;
+	float:left;
+	clear: both;
+	margin: 5px 0 5px 45px;
+}
+form#bpge-form ul.sets li ul.fields.show{
+	display:block;
+}
 
 form#bpge-form ul.sets li span.no_fields{
 	float:left;

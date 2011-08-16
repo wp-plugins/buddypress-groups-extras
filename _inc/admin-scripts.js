@@ -3,6 +3,13 @@ jQuery(document).ready(function(){
 	/*
 	 * Predefined fields
 	 */
+	// show fields in a set
+	jQuery('ul.sets a.display_fields').click(function(e){
+		e.preventDefault();
+		var field_id = jQuery(this).parent().parent().attr('id').split('_');field_id = field_id[1];
+		jQuery('ul.sets li ul#fields_'+field_id).toggleClass('show');
+	});
+	// delete set of fields with all fields
 	jQuery('ul.sets a.field_delete').click(function(e){
 		e.preventDefault();
 		var field_id = jQuery(this).parent().parent().attr('id').split('_');field_id = field_id[1];

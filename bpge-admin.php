@@ -86,7 +86,7 @@ class BPGE_ADMIN{
 				'fields' => array(
 					0 => array(
 						'name' => 'Name 1',
-						'description' => 'Description',
+						'desc' => 'Description',
 						'type' => 'checkbox',
 						'options' => array(
 							0 => array(
@@ -113,25 +113,31 @@ class BPGE_ADMIN{
 					
 					echo '<span class="name">';
 						echo $group['name'];
-						echo '<input type="hidden" name="bpge_fields_g['.$group['id'].'][name]" value="'.$group['name'].'" /> ';
 					echo '</span>';
+					echo '<input type="hidden" name="bpge_fields_g['.$group['id'].'][name]" value="'.$group['name'].'" /> ';
 					
 					echo '<span class="desc">';
 						if(!empty($group['desc'])){
 							echo $group['desc'];
 						}
-						echo '<input type="hidden" name="bpge_fields_g['.$group['id'].'][desc]" value="'.$group['desc'].'" /> ';
 					echo '</span>';
+					echo '<input type="hidden" name="bpge_fields_g['.$group['id'].'][desc]" value="'.$group['desc'].'" /> ';
 					
 					echo '<span class="actions">';
-						if(!empty($group['fields'])){
-							echo '<a href="#" class="button show_fields">'.__('Show Fields', 'bpge').'</a>&nbsp;';
-						}else{
-							echo '<a href="#" class="button add_fields">'.__('Add Fields', 'bpge').'</a>&nbsp;';
-						}
+						echo '<a href="#" class="button display_fields">'.__('Show Fields', 'bpge').' ('.count($group['fields']).')</a>&nbsp;';
 						echo '<a href="#" class="button field_edit">'.__('Edit','bpde').'</a>&nbsp;<a href="#" class="button field_delete">'.__('Delete','bpde').'</a>';
 					echo '</span>';
+					
+					if(!empty($group['fields'])){
+						echo '<ul class="fields" id="fields_'.$group['id'].'">';
+							foreach($group['fields'] as $field){
+								echo '<li>'.$field['name'].' &rarr; '.$field['desc'].' &rarr; '.$field['type'].'</li>';
+							}
+						echo '</ul>';
+					}
+					
 					echo '<div class="clear"></div>';
+					
 				echo '</li>';
 			}
 		}else{
