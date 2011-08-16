@@ -1,5 +1,22 @@
 jQuery(document).ready(function(){
+	
+	/*
+	 * Predefined fields
+	 */
+	jQuery('ul.sets a.field_delete').click(function(e){
+		e.preventDefault();
+		var field_id = jQuery(this).parent().parent().attr('id').split('_');field_id = field_id[1];
 
+		// HERE WILL BE AJAX REQUEST TO DELETE THAT FIELD
+		jQuery('ul.sets li#set_'+field_id).fadeOut('fast',function(){
+			jQuery(this).remove();
+		});
+		
+	});
+	
+	/*
+	 * Groups checkboxes
+	*/
 	var status = jQuery('input[type=checkbox].bpge_allgroups').attr('checked');
 
 	if ( status && status == 'checked'){

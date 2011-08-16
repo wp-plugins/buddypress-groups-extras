@@ -2,6 +2,7 @@
 add_action('wp_print_scripts', 'bpge_js_all');
 function bpge_js_all() {
 	global $bp;
+	$bpge = bp_get_option('bpge');
 	/*
 	$bp->action_variable[0] = extras
 	$bp->action_variable[1] = fields | pages | fields-manage | pages-manage
@@ -16,7 +17,7 @@ function bpge_js_all() {
 		wp_enqueue_script('jquery-ui-sortable');
 	}
 
-	if ( $bp->current_component == $bp->groups->slug && $bp->is_single_item && 'admin' == $bp->current_action && $bp->action_variables[0] == 'extras' && $bp->action_variables[1] == 'pages-manage' ){
+	if ($bpge['re'] == 1 && $bp->current_component == $bp->groups->slug && $bp->is_single_item && 'admin' == $bp->current_action && $bp->action_variables[0] == 'extras' && $bp->action_variables[1] == 'pages-manage' ){
 		wp_enqueue_script('tiny_mce', $bp->root_domain . '/wp-includes/js/tinymce/tiny_mce.js', false, '20110720');
 		add_action('wp_head','bpge_js_richeditor');
 	}
@@ -136,8 +137,13 @@ add_action('wp_print_styles', 'bpge_css_all');
 function bpge_css_all() {
 	global $bp;
 		
-	if ( $bp->current_component == $bp->groups->slug && $bp->is_single_item ) 
-		wp_enqueue_style('BPGE_EXTRA_CSS', WP_PLUGIN_URL.'/buddypress-groups-extras/_inc/extra-styles.css');
+	if ( $bp->current_component == $bp->groups->slug && $bp->is_single_item ){
+		if (file_exists(WP_PLUGIN_DIR.'/buddypress-groups-extras/_inc/extra-styles.css')){
+			wp_enqueue_style('BPGE_EXTRA_CSS', WP_PLUGIN_URL.'/buddypress-groups-extras/_inc/extra-styles.css');
+		}else{
+			wp_enqueue_style('BPGE_EXTRA_CSS', WP_PLUGIN_URL.'/buddypress-groups-extras/_inc/extra-styles-dev.css');
+		}
+	}
 		
 }
 
@@ -145,7 +151,7 @@ add_action('admin_head', 'bpge_css_admin');
 function bpge_css_admin(){
 	global $post_type; 
 	
-	if (($_GET['post_type'] == 'gpages') || ($post_type == 'gpages')) {
+	if (($_GET['post_type'] == 'gpages') || ($post_type == 'gpages') || $_GET['page'] == 'bpge-admin') {
 		echo "<link type='text/css' rel='stylesheet' href='" . WP_PLUGIN_URL.'/buddypress-groups-extras/_inc/admin-styles.css' . "' />";
 	}
 }

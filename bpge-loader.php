@@ -4,6 +4,7 @@ class BPGE extends BP_Group_Extension {
     var $bpge = false;
     
     var $slug = 'extras';
+	var $page_slug = 'gpages';
     var $name = false;
     var $nav_item_name = false;
     var $gpages_item_name = false;
@@ -56,18 +57,18 @@ class BPGE extends BP_Group_Extension {
             if ( bp_is_groups_component() && $bp->is_single_item ) {
                 bp_core_new_subnav_item( array( 
                         'name' => $this->gpages_item_name, 
-                        'slug' => 'gpages', 
+                        'slug' => $this->page_slug, 
                         'parent_slug' => $bp->groups->current_group->slug, 
                         'parent_url' => bp_get_group_permalink( $bp->groups->current_group ), 
                         'position' => $this->nav_gpages_position, 
-                        'item_css_id' => 'nav-gpages', 
+                        'item_css_id' => 'nav-'.$this->page_slug, 
                         'screen_function' => array( &$this, 'gpages' ), 
                         'user_has_access' => $this->enable_gpages_item
                 ) );
             }
 
             // When we are viewing the extension display page, set the title and options title
-            if ( bp_is_groups_component() && $bp->is_single_item && $bp->current_action == 'gpages' ) {
+            if ( bp_is_groups_component() && $bp->is_single_item && $bp->current_action == $this->page_slug ) {
                 add_action( 'bp_template_content_header', create_function( '', 'echo "' . esc_attr( $this->gpages_item_name ) . '";' ) );
                 add_action( 'bp_template_title', create_function( '', 'echo "' . esc_attr( $this->gpages_item_name ) . '";' ) );
             }
@@ -130,18 +131,18 @@ class BPGE extends BP_Group_Extension {
         if (empty($bp->action_variables)){
             global $wpdb;
             $sql = "SELECT `post_name` FROM {$wpdb->prefix}posts 
-                        WHERE `post_parent` = {$bp->groups->current_group->extras['gpage_id']} AND `post_type` = 'gpages'
+                        WHERE `post_parent` = {$bp->groups->current_group->extras['gpage_id']} AND `post_type` = '{$this->page_slug}'
                         ORDER BY `menu_order` ASC
                         LIMIT 1";
             $bp->action_variables[0] = $wpdb->get_var($wpdb->prepare($sql));
         }
-        
+		
         if ( count($pages) > 1 ) {
             echo '<div role="navigation" id="subnav" class="item-list-tabs no-ajax">
                 <ul>';
                         foreach($pages as $page){
                             echo '<li '. (($bp->action_variables[0] == $page->post_name) ? 'class="current"' : '') .'>
-                                <a href="'.bp_get_group_permalink( $bp->groups->current_group ) . 'gpages/'. $page->post_name.'">'.$page->post_title.'</a>
+                                <a href="'.bp_get_group_permalink( $bp->groups->current_group ) . $this->page_slug .'/'. $page->post_name.'">'.$page->post_title.'</a>
                             </li>';
                         }
                     do_action('bpge_gpages_nav_in', $this, $pages);
@@ -153,13 +154,19 @@ class BPGE extends BP_Group_Extension {
     
     function gpages_screen_content(){
         global $bp, $wpdb;
-        $sql = "SELECT * FROM {$wpdb->prefix}posts WHERE `post_name` = '{$bp->action_variables[0]}'";
+        $sql = "SELECT * FROM {$wpdb->prefix}posts WHERE `post_name` = '{$bp->action_variables[0]}' and `post_type` = '{$this->page_slug}'";
         $page = $wpdb->get_row($wpdb->prepare($sql));
-        //$page = get_post($bp->action_variables[0]);
         do_action('bpge_gpages_content_display_before', $this, $page);
+		
+		setup_postdata($page);
         echo '<div class="gpage">';
-            echo apply_filters('bpge_gpages_content',$page->post_content);
-        echo '</div>';
+            apply_filters('bpge_gpages_content', the_content());
+		
+			if (bp_group_is_admin()){
+				echo '<div class="edit_link"><a target="_blank" href="'.bp_get_group_permalink( $bp->groups->current_group ).'admin/extras/pages-manage/?edit='.$page->ID.'">[Edit this page]</a></div>';
+			}
+		echo '</div>';
+		
 		do_action('bpge_gpages_content_display_after', $this, $page);
     }
     
@@ -356,7 +363,7 @@ class BPGE extends BP_Group_Extension {
         global $bp;
         $args = array( 
                             'post_parent' => $bp->groups->current_group->extras['gpage_id'], 
-                            'post_type' => 'gpages',
+                            'post_type' => $this->page_slug,
                             'orderby' => 'menu_order',
                             'order' => 'ASC',
                             'post_status' => $post_status
@@ -599,7 +606,7 @@ class BPGE extends BP_Group_Extension {
                     'post_parent' => apply_filters('bpge_new_page_parent', $bp->groups->current_group->extras['gpage_id']),
                     'post_status' => apply_filters('bpge_new_page_status', $_POST['extra-page-status']),
                     'menu_order' => count($this->get_all_gpages()) + 1,
-                    'post_type' => 'gpages'
+                    'post_type' => $this->page_slug
                 );
                 
                 do_action('bpge_save_new_page_before', $this, $page);
@@ -840,7 +847,7 @@ class BPGE extends BP_Group_Extension {
                                 'post_name' => $bp->groups->current_group->slug,
                                 'post_status' => 'publish',
                                 'post_title' => $bp->groups->current_group->name,
-                                'post_type' => 'gpages'
+                                'post_type' => $this->page_slug
                             ));
                 // ...and save it to reuse later
                 groups_update_groupmeta($bp->groups->current_group->id, 'bpge', $old_data);

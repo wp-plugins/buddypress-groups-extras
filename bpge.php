@@ -33,19 +33,24 @@ function bpge_load_textdomain() {
 add_action( 'bp_init', 'bpge_load' );
 function bpge_load(){
     global $bp;
-    
+	
+	// scripts and styles
     require ( dirname(__File__) . '/bpge-cssjs.php');
-    if ( is_admin()){
+    
+	// admin interface
+	if ( is_admin()){
         require ( dirname(__File__) . '/bpge-admin.php');
-        
     }
-    $bpge = get_option('bpge');
+	
+	// the core
+    $bpge = bp_get_option('bpge');
     if ( (is_string($bpge['groups']) && $bpge['groups'] == 'all' ) || (is_array($bpge['groups']) && in_array($bp->groups->current_group->id, $bpge['groups'])) ){
         require ( dirname(__File__) . '/bpge-loader.php');
     }
-    if(is_super_admin()){
-        bpge_register_groups_pages();
-    }
+    
+	// gpages - custom post type
+    bpge_register_groups_pages();
+    
     do_action('bpge_load');
 }
 
@@ -166,7 +171,7 @@ function bpge_names($name = 'name'){
 /*
  * Personal debug functions
  */
-//add_action('bp_adminbar_menus', 'bpge_queries');
+add_action('bp_adminbar_menus', 'bpge_queries');
 function bpge_queries(){
     echo '<li class="no-arrow"><a>'.get_num_queries() . ' queries | ';
     echo round(memory_get_usage() / 1024 / 1024, 2) . 'Mb</a></li>';
