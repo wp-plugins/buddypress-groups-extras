@@ -1,5 +1,9 @@
 body.edit-php #wpbody-content h2 a.add-new-h2{display:none}
 
+table#bp-gtm-admin-table td.checkbox{
+	width:15px
+}
+
 form#bpge-form ul.sets{
 	margin:20px 10px
 }

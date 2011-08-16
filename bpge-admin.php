@@ -160,8 +160,8 @@ class BPGE_ADMIN{
 			</thead>
 			<tbody id="the-list">
 				<tr>
-					<td><input type="checkbox" class="bpge_allgroups" name="bpge_groups" <?php echo ('all' == $bpge['groups']) ? 'checked="checked" ' : ''; ?> value="all" /></td>
-					<td><?php _e('All groups', 'bpge') ?></td>
+					<td class="checkbox"><input type="checkbox" class="bpge_allgroups" name="bpge_groups" <?php echo ('all' == $bpge['groups']) ? 'checked="checked" ' : ''; ?> value="all" /></td>
+					<td><strong><?php _e('All groups', 'bpge') ?></strong></td>
 				</tr>
 				<?php
 				$arg['type'] = 'alphabetical';
@@ -170,8 +170,8 @@ class BPGE_ADMIN{
 					while ( bp_groups() ) : bp_the_group();
 						$description = preg_replace( array('<<p>>', '<</p>>', '<<br />>', '<<br>>'), '', bp_get_group_description_excerpt() );
 						echo '<tr>
-								<td><input name="bpge_groups['.bp_get_group_id().']" class="bpge_groups" type="checkbox" '.( ('all' == $bpge['groups'] || in_array(bp_get_group_id(), $bpge['groups']) ) ? 'checked="checked" ' : '').'value="'.bp_get_group_id().'" /></td>
-								<td><a href="'.bp_get_group_permalink().'" target="_blank">'. bp_get_group_name() .'</a> &rarr; '.$description.'</td>
+								<td class="checkbox"><input name="bpge_groups['.bp_get_group_id().']" class="bpge_groups" type="checkbox" '.( ('all' == $bpge['groups'] || in_array(bp_get_group_id(), $bpge['groups']) ) ? 'checked="checked" ' : '').'value="'.bp_get_group_id().'" /></td>
+								<td><a href="'.bp_get_group_permalink().'admin/extras/" target="_blank">'. bp_get_group_name() .'</a> &rarr; '.$description.'</td>
 							</tr>';
 					endwhile;
 				}
@@ -180,7 +180,7 @@ class BPGE_ADMIN{
 			<tfoot>
 				<tr class="header">
 					<td><input type="checkbox" class="bpge_allgroups" name="bpge_groups" <?php echo ('all' == $bpge['groups']) ? 'checked="checked" ' : ''; ?> value="all" /></td>
-					<td><?php _e('All groups', 'bpge') ?></td>
+					<td><strong><?php _e('All groups', 'bpge') ?></strong></td>
 					<td>&nbsp;</td>
 				</tr>
 			</tfoot>
