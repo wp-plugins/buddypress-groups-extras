@@ -9,12 +9,13 @@ jQuery(document).ready(function(){
 		var field_id = jQuery(this).parent().parent().attr('id').split('_');field_id = field_id[1];
 		jQuery('ul.sets li ul#fields_'+field_id).toggleClass('show');
 	});
+	
 	// delete set of fields with all fields
 	jQuery('ul.sets a.field_delete').click(function(e){
 		e.preventDefault();
 		var field_id = jQuery(this).parent().parent().attr('id').split('_');field_id = field_id[1];
 
-		// HERE WILL BE AJAX REQUEST TO DELETE THAT FIELD
+		// @TODO : HERE WILL BE AJAX REQUEST TO DELETE THAT FIELD
 		jQuery('ul.sets li#set_'+field_id).fadeOut('fast',function(){
 			jQuery(this).remove();
 		});
