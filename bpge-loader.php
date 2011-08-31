@@ -8,6 +8,8 @@ class BPGE extends BP_Group_Extension {
     var $name = false;
     var $nav_item_name = false;
     var $gpages_item_name = false;
+    
+    var $home_name = false;
 
     var $gpage_id = false;
     
@@ -49,18 +51,25 @@ class BPGE extends BP_Group_Extension {
         $this->name = bpge_names('nav');
         // Public page
         $this->nav_item_name = $bp->groups->current_group->extras['display_page_name'];
+        // Home page
+        $this->home_name = $bp->groups->current_group->extras['home_name'];
+        if(!empty($this->home_name)){
+            $bp->bp_options_nav[$bp->groups->current_group->slug]['home']['name'] = $this->home_name;
+        }
+        
         // gPages Page
         $this->gpages_item_name = $bp->groups->current_group->extras['gpage_name'];
-        $this->enable_gpages_item = $bp->groups->current_group->extras['display_gpages'] == 'public' ? true : false;
+        $this->enable_gpages_item = $bp->groups->current_group->extras['display_gpages'] == 'public' ? true : false;        
         
         if ( $this->enable_gpages_item ) {
             if ( bp_is_groups_component() && $bp->is_single_item ) {
+                $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
                 bp_core_new_subnav_item( array( 
                         'name' => $this->gpages_item_name, 
                         'slug' => $this->page_slug, 
                         'parent_slug' => $bp->groups->current_group->slug, 
                         'parent_url' => bp_get_group_permalink( $bp->groups->current_group ), 
-                        'position' => $this->nav_gpages_position, 
+                        'position' => $order[$this->page_slug],//$this->nav_gpages_position, 
                         'item_css_id' => 'nav-'.$this->page_slug, 
                         'screen_function' => array( &$this, 'gpages' ), 
                         'user_has_access' => $this->enable_gpages_item
@@ -317,17 +326,25 @@ class BPGE extends BP_Group_Extension {
         echo '</p>';
         
         echo '<hr />';
-        
-        echo '<label>'.__('You can reorder here all navigation links in this group. The first item will become a landing page for this group. Reload the page to see changes.<br />Please do NOT make Admin pages on first place - that will cause display problems.', 'bpge') .'</label>';
+                
+        echo '<label>'.__('You can reorder here all navigation links in this group. The first item will become a landing page for this group. Save changes after reordering.<br />Please do NOT make Admin pages on first place - that will cause display problems.', 'bpge') .'</label>';
         $group_nav = $bp->bp_options_nav[$bp->groups->current_group->slug];
         echo '<ul id="nav-sortable">';
             foreach($group_nav as $nav){
+                if($nav['slug'] == 'home'){
+                    $home_name = $nav['name'];
+                }
                 echo '<li id="position_'.$nav['position'].'" class="default">
                         <strong>' . $nav['name'] .'</strong>
                     </li>';
             }
             echo '<input type="hidden" name="bpge_group_nav_position" value=""/>';
         echo '</ul>';
+        
+        echo '<p>';
+            echo '<label for="group_extras_home_name">'.__('Rename the Home group page - Activity (for example) is far better.','bpge').'</label>';
+            echo '<input type="text" value="'.($this->home_name?$this->home_name:$home_name).'" name="group-extras-home-name">';
+        echo '</p>';
         
         echo '<div class="clear">&nbsp;</div>';
         
@@ -520,24 +537,28 @@ class BPGE extends BP_Group_Extension {
                 $meta['gpage_name'] = stripslashes(strip_tags($_POST['group-gpages-display-name']));
                 $meta['display_gpages'] = $_POST['group-gpages-display'];
                 
+                $meta['home_name'] = stripslashes(strip_tags($_POST['group-extras-home-name']));
+                
                 // now save nav order
                 // preparing vars
-                parse_str($_POST['bpge_group_nav_position'], $page_order );
-                //print_var($page_order);
-                $nav_old = $bp->bp_options_nav[$bp->groups->current_group->slug];
-                $order = array();
-                // update menu_order for each nav item
-                $pos = 1;
-                foreach($page_order['position'] as $index => $old_position){
-                    foreach($nav_old as $nav){
-                        if ($nav['position'] == $old_position){
-                            $order[$nav['slug']] = $pos;
+                if(!empty($_POST['bpge_group_nav_position'])){
+                    parse_str($_POST['bpge_group_nav_position'], $page_order );
+                    $nav_old = $bp->bp_options_nav[$bp->groups->current_group->slug];
+                    $order = array();
+                    // update menu_order for each nav item
+                    $pos = 1;
+
+                    foreach($page_order['position'] as $index => $old_position){
+                        foreach($nav_old as $nav){
+                            if ($nav['position'] == $old_position){
+                                $order[$nav['slug']] = $pos;
+                            }
+                            $pos++;
                         }
-                        $pos++;
                     }
+                    // save to DB
+                    groups_update_groupmeta($bp->groups->current_group->id, 'bpge_nav_order', $order);
                 }
-                // save to DB
-                groups_update_groupmeta($bp->groups->current_group->id, 'bpge_nav_order', $order);
                 
                 do_action('bpge_save_general', $this, $meta);
                 
@@ -855,9 +876,9 @@ class BPGE extends BP_Group_Extension {
                 return $old_data['gpage_id'];
                 break;
                 
-                case 'id':
-                    return get_post($input);
-                    break;
+            case 'id':
+                return get_post($input);
+                break;
         }
         
     }
@@ -950,14 +971,14 @@ class BPGE extends BP_Group_Extension {
     function buddybar_admin_link(){
         global $bp;
         echo '<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '">'. __( 'Manage Extras', 'bpge' ) .'</a>
-                    <ul>
-                        <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields/">'.__('All Fields', 'bpge' ) .'</a></li>
-                        <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages/">'.__('All Pages', 'bpge' ) .'</a></li>
-                        <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields-manage/">'.__('Add Field', 'bpge' ) .'</a></li>
-                        <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages-manage/">'.__('Add Page', 'bpge' ) .'</a></li>';
-                        do_action('bpge_buddybar_admin_links', $this);
-                        echo '
-                    </ul>
+                <ul>
+                    <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields/">'.__('All Fields', 'bpge' ) .'</a></li>
+                    <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages/">'.__('All Pages', 'bpge' ) .'</a></li>
+                    <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields-manage/">'.__('Add Field', 'bpge' ) .'</a></li>
+                    <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages-manage/">'.__('Add Page', 'bpge' ) .'</a></li>';
+                    do_action('bpge_buddybar_admin_links', $this);
+                    echo '
+                </ul>
             </li>';
     }
     
