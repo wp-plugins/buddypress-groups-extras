@@ -33,22 +33,22 @@ function bpge_load_textdomain() {
 add_action( 'bp_init', 'bpge_load' );
 function bpge_load(){
     global $bp;
-	
-	// scripts and styles
+    
+    // scripts and styles
     require ( dirname(__File__) . '/bpge-cssjs.php');
     
-	// admin interface
-	if ( is_admin()){
+    // admin interface
+    if ( is_admin()){
         require ( dirname(__File__) . '/bpge-admin.php');
     }
-	
-	// the core
+    
+    // the core
     $bpge = bp_get_option('bpge');
     if ( (is_string($bpge['groups']) && $bpge['groups'] == 'all' ) || (is_array($bpge['groups']) && in_array($bp->groups->current_group->id, $bpge['groups'])) ){
         require ( dirname(__File__) . '/bpge-loader.php');
     }
     
-	// gpages - custom post type
+    // gpages - custom post type
     bpge_register_groups_pages();
     
     do_action('bpge_load');
@@ -59,15 +59,15 @@ add_action('bp_init', 'group_nav_order');
 function group_nav_order(){
     global $bp;
 
-    if ( $bp->current_component == $bp->groups->slug && $bp->is_single_item){
+    if ( $bp->current_component == bp_get_groups_root_slug() && $bp->is_single_item){
         $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
-		//print_var($order);
+        //print_var($order);
         if (!empty($order) && is_array($order)){
             foreach($order as $slug => $position){
                 $bp->bp_options_nav[$bp->groups->current_group->slug][$slug]['position'] = $position;
             }
         }
-		//$bp->current_action = reset(array_flip($order));
+        //$bp->current_action = reset(array_flip($order));
         do_action('group_nav_order');
     }
 
@@ -77,15 +77,15 @@ function group_nav_order(){
 add_filter('bp_default_component_subnav','def_landing_page', 10, 2);
 function def_landing_page($default_subnav_slug, $r){
     global $bp;
-    if ( $bp->current_component == $bp->groups->slug && $bp->is_single_item){
+    if ( $bp->current_component == bp_get_groups_root_slug() && $bp->is_single_item){
         // get all pages - take the first
         $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
         //print_var($order);
-		$default_subnav_slug = reset(array_flip($order));
+        $default_subnav_slug = reset(array_flip($order));
 
         //$bp->current_action = $default_subnav_slug;
     }
-	//echo $default_subnav_slug;
+    //echo $default_subnav_slug;
     return $default_subnav_slug;
 }
 

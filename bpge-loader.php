@@ -4,7 +4,7 @@ class BPGE extends BP_Group_Extension {
     var $bpge = false;
     
     var $slug = 'extras';
-	var $page_slug = 'gpages';
+    var $page_slug = 'gpages';
     var $name = false;
     var $nav_item_name = false;
     var $gpages_item_name = false;
@@ -136,7 +136,7 @@ class BPGE extends BP_Group_Extension {
                         LIMIT 1";
             $bp->action_variables[0] = $wpdb->get_var($wpdb->prepare($sql));
         }
-		
+        
         if ( count($pages) > 1 ) {
             echo '<div role="navigation" id="subnav" class="item-list-tabs no-ajax">
                 <ul>';
@@ -157,17 +157,17 @@ class BPGE extends BP_Group_Extension {
         $sql = "SELECT * FROM {$wpdb->prefix}posts WHERE `post_name` = '{$bp->action_variables[0]}' and `post_type` = '{$this->page_slug}'";
         $page = $wpdb->get_row($wpdb->prepare($sql));
         do_action('bpge_gpages_content_display_before', $this, $page);
-		
-		setup_postdata($page);
+        
+        setup_postdata($page);
         echo '<div class="gpage">';
             apply_filters('bpge_gpages_content', the_content());
-		
-			if (bp_group_is_admin()){
-				echo '<div class="edit_link"><a target="_blank" href="'.bp_get_group_permalink( $bp->groups->current_group ).'admin/extras/pages-manage/?edit='.$page->ID.'">[Edit this page]</a></div>';
-			}
-		echo '</div>';
-		
-		do_action('bpge_gpages_content_display_after', $this, $page);
+        
+            if (bp_group_is_admin()){
+                echo '<div class="edit_link"><a target="_blank" href="'.bp_get_group_permalink( $bp->groups->current_group ).'admin/extras/pages-manage/?edit='.$page->ID.'">[Edit this page]</a></div>';
+            }
+        echo '</div>';
+        
+        do_action('bpge_gpages_content_display_after', $this, $page);
     }
     
     // Display exra fields on edit group details page
@@ -225,7 +225,7 @@ class BPGE extends BP_Group_Extension {
     function edit_group_fields_save($group_id){
         global $bp;
         
-        if ( $bp->current_component == $bp->groups->slug && 'edit-details' == $bp->action_variables[0] ) {
+        if ( $bp->current_component == bp_get_groups_root_slug() && 'edit-details' == $bp->action_variables[0] ) {
             if ( $bp->is_item_admin || $bp->is_item_mod  ) {
                 // If the edit form has been submitted, save the edited details
                 if ( isset( $_POST['save'] ) ) {
@@ -326,7 +326,7 @@ class BPGE extends BP_Group_Extension {
                         <strong>' . $nav['name'] .'</strong>
                     </li>';
             }
-			echo '<input type="hidden" name="bpge_group_nav_position" value=""/>';
+            echo '<input type="hidden" name="bpge_group_nav_position" value=""/>';
         echo '</ul>';
         
         echo '<div class="clear">&nbsp;</div>';
@@ -385,12 +385,13 @@ class BPGE extends BP_Group_Extension {
         echo '<ul id="pages-sortable">';
             foreach($pages as $page){
                 echo '<li id="position_'.$page->ID.'" class="default">
-                                <strong>' . $page->post_title .'</strong> &rarr; ' . (($page->post_status == 'publish')?__('displayed','bpge'):__('<u>not</u> displayed','bpge')) . '
-                                <span class="items-link">
-                                    <a href="' . bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug . '/pages-manage/?edit=' . $page->ID . '" class="button" title="'.__('Change its title, content etc','bpge').'">'.__('Edit page', 'bpge').'</a>&nbsp;
-                                    <a href="#" class="button delete_page" title="'.__('Delete this item and all its content', 'bpge').'">'.__('Delete', 'bpge').'</a>
-                                </span>
-                            </li>';
+                        <strong>' . $page->post_title .'</strong> &rarr; ' . (($page->post_status == 'publish')?__('displayed','bpge'):__('<u>not</u> displayed','bpge')) . '
+                        <span class="items-link">
+                            <a href="' . bp_get_group_permalink( $bp->groups->current_group ) . $this->page_slug . '/' . $page->post_name . '" class="button" target="_blank" title="'.__('View this page live','bpge').'">'.__('View', 'bpge').'</a>&nbsp;
+                            <a href="' . bp_get_group_permalink( $bp->groups->current_group ) . 'admin/'.$this->slug . '/pages-manage/?edit=' . $page->ID . '" class="button" title="'.__('Change its title, content etc','bpge').'">'.__('Edit', 'bpge').'</a>&nbsp;
+                            <a href="#" class="button delete_page" title="'.__('Delete this item and all its content', 'bpge').'">'.__('Delete', 'bpge').'</a>
+                        </span>
+                    </li>';
             }
         echo '</ul>';
         
@@ -501,7 +502,7 @@ class BPGE extends BP_Group_Extension {
     // Save all changes into DB
     function edit_screen_save() {
         global $bp;
-        if ( $bp->current_component == $bp->groups->slug && 'extras' == $bp->action_variables[0] ) {
+        if ( $bp->current_component == bp_get_groups_root_slug() && 'extras' == $bp->action_variables[0] ) {
             if ( !$bp->is_item_admin )
                 return false;
             // Save general settings
@@ -519,25 +520,25 @@ class BPGE extends BP_Group_Extension {
                 $meta['gpage_name'] = stripslashes(strip_tags($_POST['group-gpages-display-name']));
                 $meta['display_gpages'] = $_POST['group-gpages-display'];
                 
-				// now save nav order
+                // now save nav order
                 // preparing vars
                 parse_str($_POST['bpge_group_nav_position'], $page_order );
                 //print_var($page_order);
                 $nav_old = $bp->bp_options_nav[$bp->groups->current_group->slug];
                 $order = array();
                 // update menu_order for each nav item
-				$pos = 1;
+                $pos = 1;
                 foreach($page_order['position'] as $index => $old_position){
                     foreach($nav_old as $nav){
                         if ($nav['position'] == $old_position){
                             $order[$nav['slug']] = $pos;
-						}
-						$pos++;
+                        }
+                        $pos++;
                     }
                 }
                 // save to DB
                 groups_update_groupmeta($bp->groups->current_group->id, 'bpge_nav_order', $order);
-				
+                
                 do_action('bpge_save_general', $this, $meta);
                 
                 // Save into groupmeta table some general settings
