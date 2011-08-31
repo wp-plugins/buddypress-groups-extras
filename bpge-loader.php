@@ -30,11 +30,11 @@ class BPGE extends BP_Group_Extension {
     
     function BPGE(){
         global $bp;
-        
+
         if (!empty($bp->groups->current_group)){
             // populate extras data in global var
             $bp->groups->current_group->extras = groups_get_groupmeta($bp->groups->current_group->id, 'bpge');
-            add_action('bp_groups_adminbar_admin_menu', array($this, 'buddybar_admin_link'));
+            add_action('bp_groups_adminbar_admin_menu', array($this, 'buddybar_admin_links'));
         }
         
         $this->gpage_id = !empty($bp->groups->current_group->extras['gpage_id']) ? $bp->groups->current_group->extras['gpage_id'] : $this->get_gpage_by('group_id');
@@ -53,7 +53,7 @@ class BPGE extends BP_Group_Extension {
         $this->nav_item_name = $bp->groups->current_group->extras['display_page_name'];
         // Home page
         $this->home_name = $bp->groups->current_group->extras['home_name'];
-        if(!empty($this->home_name)){
+        if( !empty($this->home_name )){
             $bp->bp_options_nav[$bp->groups->current_group->slug]['home']['name'] = $this->home_name;
         }
         
@@ -64,6 +64,9 @@ class BPGE extends BP_Group_Extension {
         if ( $this->enable_gpages_item ) {
             if ( bp_is_groups_component() && $bp->is_single_item ) {
                 $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
+                if(empty($order[$this->page_slug])){
+                    $order[$this->page_slug] = 99;
+                }
                 bp_core_new_subnav_item( array( 
                         'name' => $this->gpages_item_name, 
                         'slug' => $this->page_slug, 
@@ -83,11 +86,8 @@ class BPGE extends BP_Group_Extension {
             }
         }
         
-
         add_action('groups_custom_group_fields_editable', array($this, 'edit_group_fields'));
         add_action('groups_group_details_edited', array($this, 'edit_group_fields_save'));
-        
-        //print_var($bp->groups->current_group,1);
     }
 
     // Public page with already saved content
@@ -126,6 +126,8 @@ class BPGE extends BP_Group_Extension {
         }
     }
 
+    /************************************************************************/
+
     // Publis gPages screen function
     function gpages(){
         add_action( 'bp_before_group_body', array( &$this, 'gpages_screen_nav' ) );
@@ -163,6 +165,7 @@ class BPGE extends BP_Group_Extension {
     
     function gpages_screen_content(){
         global $bp, $wpdb;
+        
         $sql = "SELECT * FROM {$wpdb->prefix}posts WHERE `post_name` = '{$bp->action_variables[0]}' and `post_type` = '{$this->page_slug}'";
         $page = $wpdb->get_row($wpdb->prepare($sql));
         do_action('bpge_gpages_content_display_before', $this, $page);
@@ -178,6 +181,8 @@ class BPGE extends BP_Group_Extension {
         
         do_action('bpge_gpages_content_display_after', $this, $page);
     }
+    
+    /************************************************************************/
     
     // Display exra fields on edit group details page
     function edit_group_fields(){
@@ -265,6 +270,8 @@ class BPGE extends BP_Group_Extension {
         //echo 'BP_Group_Extension::widget_display()';
     }
 
+    /************************************************************************/
+
     // Admin area - Main
     function edit_screen() {
         global $bp;
@@ -334,11 +341,14 @@ class BPGE extends BP_Group_Extension {
                 if($nav['slug'] == 'home'){
                     $home_name = $nav['name'];
                 }
+                if(empty($nav['position'])){
+                    $nav['position'] = 99;
+                }
                 echo '<li id="position_'.$nav['position'].'" class="default">
                         <strong>' . $nav['name'] .'</strong>
                     </li>';
             }
-            echo '<input type="hidden" name="bpge_group_nav_position" value=""/>';
+            echo '<input type="hidden" name="bpge_group_nav_position" value="" />';
         echo '</ul>';
         
         echo '<p>';
@@ -540,15 +550,15 @@ class BPGE extends BP_Group_Extension {
                 $meta['home_name'] = stripslashes(strip_tags($_POST['group-extras-home-name']));
                 
                 // now save nav order
-                // preparing vars
                 if(!empty($_POST['bpge_group_nav_position'])){
-                    parse_str($_POST['bpge_group_nav_position'], $page_order );
+                    // preparing vars
+                    parse_str($_POST['bpge_group_nav_position'], $tab_order );
                     $nav_old = $bp->bp_options_nav[$bp->groups->current_group->slug];
                     $order = array();
-                    // update menu_order for each nav item
                     $pos = 1;
-
-                    foreach($page_order['position'] as $index => $old_position){
+                    
+                    // update menu_order for each nav item
+                    foreach($tab_order['position'] as $index => $old_position){
                         foreach($nav_old as $nav){
                             if ($nav['position'] == $old_position){
                                 $order[$nav['slug']] = $pos;
@@ -556,6 +566,7 @@ class BPGE extends BP_Group_Extension {
                             $pos++;
                         }
                     }
+
                     // save to DB
                     groups_update_groupmeta($bp->groups->current_group->id, 'bpge_nav_order', $order);
                 }
@@ -775,6 +786,8 @@ class BPGE extends BP_Group_Extension {
         do_action('bpge_extra_menus', $cur);
     }
     
+    /************************************************************************/
+    
     // Getting all extra items (fields or pages) for defined group
     function get_all_items($type, $id){
         // get all fields
@@ -953,7 +966,7 @@ class BPGE extends BP_Group_Extension {
         }   
     }
     
-
+    /************************************************************************/
     
     // Creation step - enter the data
     function create_screen() {
@@ -968,10 +981,11 @@ class BPGE extends BP_Group_Extension {
     }
 
     // Display a link for group/site admins in BuddyBar when on group page
-    function buddybar_admin_link(){
+    function buddybar_admin_links(){
         global $bp;
-        echo '<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '">'. __( 'Manage Extras', 'bpge' ) .'</a>
+        echo '<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '.">'. __( 'Manage Extras', 'bpge' ) .'</a>
                 <ul>
+                    <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '.">'.__('Settings', 'bpge' ) .'</a></li>
                     <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields/">'.__('All Fields', 'bpge' ) .'</a></li>
                     <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages/">'.__('All Pages', 'bpge' ) .'</a></li>
                     <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields-manage/">'.__('Add Field', 'bpge' ) .'</a></li>

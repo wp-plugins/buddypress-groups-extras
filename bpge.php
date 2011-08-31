@@ -61,15 +61,13 @@ function group_nav_order(){
 
     if ( $bp->current_component == bp_get_groups_root_slug() && $bp->is_single_item){
         $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
-        print_var($order);
-        //print_var($bp->bp_options_nav[$bp->groups->current_group->slug]);
+//print_var($order);        
         if (!empty($order) && is_array($order)){
             foreach($order as $slug => $position){
                 $bp->bp_options_nav[$bp->groups->current_group->slug][$slug]['position'] = $position;
             }
         }
 
-        //$bp->current_action = reset(array_flip($order));
         do_action('group_nav_order');
     }
 }
@@ -77,15 +75,16 @@ function group_nav_order(){
 add_filter('bp_default_component_subnav','bpge_group_landing_page', 10, 2);
 function bpge_group_landing_page($default_subnav_slug, $r){
     global $bp;
+    
     if ( $bp->current_component == bp_get_groups_root_slug() && $bp->is_single_item){
         // get all pages - take the first
         $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
-        //print_var($order);
+
         $default_subnav_slug = reset(array_flip($order));
 
         $bp->current_action = $default_subnav_slug;
     }
-    //echo $default_subnav_slug;
+    
     return $default_subnav_slug;
 }
 
