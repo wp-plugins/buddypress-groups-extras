@@ -55,25 +55,25 @@ function bpge_load(){
 }
 
 // reorder group nav links
-add_action('bp_init', 'group_nav_order');
-function group_nav_order(){
+add_action('bp_init', 'bpge_nav_order');
+function bpge_nav_order(){
     global $bp;
 
     if ( $bp->current_component == bp_get_groups_root_slug() && $bp->is_single_item){
         $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
-//print_var($order);        
+      
         if (!empty($order) && is_array($order)){
             foreach($order as $slug => $position){
                 $bp->bp_options_nav[$bp->groups->current_group->slug][$slug]['position'] = $position;
             }
         }
 
-        do_action('group_nav_order');
+        do_action('bpge_nav_order');
     }
 }
 
-add_filter('bp_default_component_subnav','bpge_group_landing_page', 10, 2);
-function bpge_group_landing_page($default_subnav_slug, $r){
+add_filter('bp_default_component_subnav','bpge_landing_page', 10, 2);
+function bpge_landing_page($default_subnav_slug, $r){
     global $bp;
     
     if ( $bp->current_component == bp_get_groups_root_slug() && $bp->is_single_item){
@@ -85,7 +85,7 @@ function bpge_group_landing_page($default_subnav_slug, $r){
         $bp->current_action = $default_subnav_slug;
     }
     
-    return $default_subnav_slug;
+    return apply_filters('bpge_landing_page', $default_subnav_slug);
 }
 
 // Register groups pages post type, where all their content will be stored

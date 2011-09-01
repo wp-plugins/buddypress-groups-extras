@@ -52,13 +52,13 @@ class BPGE extends BP_Group_Extension {
         // Public page
         $this->nav_item_name = $bp->groups->current_group->extras['display_page_name'];
         // Home page
-        $this->home_name = $bp->groups->current_group->extras['home_name'];
-        if( !empty($this->home_name )){
+        if( !empty($bp->groups->current_group->extras['home_name']) ){
+            $this->home_name = $bp->groups->current_group->extras['home_name'];
             $bp->bp_options_nav[$bp->groups->current_group->slug]['home']['name'] = $this->home_name;
         }
         
         // gPages Page
-        $this->gpages_item_name = $bp->groups->current_group->extras['gpage_name'];
+        $this->gpages_item_name   = $bp->groups->current_group->extras['gpage_name'];
         $this->enable_gpages_item = $bp->groups->current_group->extras['display_gpages'] == 'public' ? true : false;        
         
         if ( $this->enable_gpages_item ) {
@@ -67,25 +67,22 @@ class BPGE extends BP_Group_Extension {
                 if(empty($order[$this->page_slug])){
                     $order[$this->page_slug] = 99;
                 }
-                bp_core_new_subnav_item( array( 
-                        'name' => $this->gpages_item_name, 
-                        'slug' => $this->page_slug, 
-                        'parent_slug' => $bp->groups->current_group->slug, 
-                        'parent_url' => bp_get_group_permalink( $bp->groups->current_group ), 
-                        'position' => $order[$this->page_slug],//$this->nav_gpages_position, 
-                        'item_css_id' => 'nav-'.$this->page_slug, 
-                        'screen_function' => array( &$this, 'gpages' ), 
+                bp_core_new_subnav_item( array(
+                        'name' => $this->gpages_item_name,
+                        'slug' => $this->page_slug,
+                        'parent_slug' => $bp->groups->current_group->slug,
+                        'parent_url' => bp_get_group_permalink( $bp->groups->current_group ),
+                        'position' => $order[$this->page_slug],
+                        'item_css_id' => $this->page_slug,
+                        'screen_function' => array(&$this, 'gpages'),
                         'user_has_access' => $this->enable_gpages_item
                 ) );
-            }
-
-            // When we are viewing the extension display page, set the title and options title
-            if ( bp_is_groups_component() && $bp->is_single_item && $bp->current_action == $this->page_slug ) {
-                add_action( 'bp_template_content_header', create_function( '', 'echo "' . esc_attr( $this->gpages_item_name ) . '";' ) );
-                add_action( 'bp_template_title', create_function( '', 'echo "' . esc_attr( $this->gpages_item_name ) . '";' ) );
+                if( bp_is_current_action( $this->page_slug ) ){
+                    $this->gpages();
+                }
             }
         }
-        
+
         add_action('groups_custom_group_fields_editable', array($this, 'edit_group_fields'));
         add_action('groups_group_details_edited', array($this, 'edit_group_fields_save'));
     }
@@ -983,9 +980,9 @@ class BPGE extends BP_Group_Extension {
     // Display a link for group/site admins in BuddyBar when on group page
     function buddybar_admin_links(){
         global $bp;
-        echo '<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '.">'. __( 'Manage Extras', 'bpge' ) .'</a>
+        echo '<li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/">'. __( 'Manage Extras', 'bpge' ) .'</a>
                 <ul>
-                    <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '.">'.__('Settings', 'bpge' ) .'</a></li>
+                    <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/">'.__('Settings', 'bpge' ) .'</a></li>
                     <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields/">'.__('All Fields', 'bpge' ) .'</a></li>
                     <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/pages/">'.__('All Pages', 'bpge' ) .'</a></li>
                     <li><a href="'. bp_get_group_permalink( $bp->groups->current_group ) . 'admin/' . $this->slug . '/fields-manage/">'.__('Add Field', 'bpge' ) .'</a></li>
