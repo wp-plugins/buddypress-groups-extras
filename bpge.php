@@ -3,11 +3,11 @@
 Plugin Name: BuddyPress Groups Extras
 Plugin URI: http://ovirium.com/
 Description: Adding extra group fields and some other missing functionality to groups
-Version: 1.2
+Version: 2.0
 Author: slaFFik
 Author URI: http://cosydale.com/
 */
-define ('BPGE_VERSION', '1.2');
+define ('BPGE_VERSION', '2.0');
 
 register_activation_hook( __FILE__, 'bpge_activation');
 //register_deactivation_hook( __FILE__, 'bpge_deactivation');
@@ -79,9 +79,9 @@ function bpge_landing_page($default_subnav_slug, $r){
     if ( $bp->current_component == bp_get_groups_root_slug() && $bp->is_single_item){
         // get all pages - take the first
         $order = groups_get_groupmeta($bp->groups->current_group->id, 'bpge_nav_order');
-
-        $default_subnav_slug = reset(array_flip($order));
-
+        if(!empty($order)){
+            $default_subnav_slug = reset(array_flip($order));
+        }
         $bp->current_action = $default_subnav_slug;
     }
     
