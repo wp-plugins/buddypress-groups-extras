@@ -1,9 +1,9 @@
 === BuddyPress Groups Extras ===
-Contributors: slaFFik
+Contributors: slaFFik, valant
 Tags: buddypress, groups, ajax, meta, custom, fields, extend, admin, privacy
-Requires at least: 3.1 and 1.2.5
-Tested up to: 3.1.2
-Stable tag: 1.0
+Requires at least: 3.3 and 1.5
+Tested up to: 3.3.1 and BP 1.5.3.1
+Stable tag: 3.0
 
 After activating your groups will have ability to create any custom fields they want. Also extra page will appear with chosen content.
 
@@ -27,7 +27,8 @@ After activating your groups will have ability to create any custom fields they 
 
 == Frequently Asked Questions ==
 
-None yet.
+= Why don't I see Fields/Pages in group navigation after plugin activation and enabling it for that particular group? =
+Please go to group admin area and define Fields and Pages navigation labels and check them to Show. This is done to prevent displaying empty pages with no content.
 
 == Screenshots ==
 
@@ -35,12 +36,18 @@ None yet.
 2. Custom fields on Edit Group Details page
 3. Extra Fields management
 4. Adding new custom field
+5. Adding new group page
 
 == Changelog ==
+
+= 3.0 =
+* <b>Major update</b>
+* Default set of Fields that can be imported by group admins
+* Create custom pages for each group (custom post type is used) and display them (for FAQ, or Wiki, or whatever)
+* Reorder everything (group navigation links, fields and groups pages order)
 
 = 2.0 =
 * Was released by mistake
 
 = 1.0 =
 * Initial realease
-
