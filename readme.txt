@@ -16,8 +16,9 @@ After activating your groups will have ability to create any custom fields they 
 * Create custom fields using various type (radios, select, input, textarea etc)
 * Edit fields data on Edit Group Details page in Group Admin area.
 * Display / hide page, where fields (chosen by you) will be displayed.
-* Reorder fields.
-* and more to come in future releases!
+* Default set of Fields that can be imported by group admins
+* Create custom pages for each group (custom post type is used) and display them (for FAQ, or Wiki, or whatever)
+* Reorder everything (group navigation links, fields and groups pages order)
 
 == Installation ==
 
