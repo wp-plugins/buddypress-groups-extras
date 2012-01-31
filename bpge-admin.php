@@ -63,6 +63,7 @@ class BPGE_ADMIN{
         //add_meta_box('bpge-admin-debug', __('Debug', 'bpge'), array(&$this, 'on_bpge_admin_debug'), $this->pagehook, $position, $priority );
         if(function_exists('wp_editor')){
             add_meta_box('bpge-admin-re', __('Rich Editor for Groups Pages', 'bpge'), array(&$this, 'on_bpge_admin_re'), $this->pagehook, $position, $priority );
+            add_meta_box('bpge-admin-promo', __('Need Help / Custom Work?', 'bpge'), array(&$this, 'on_bpge_admin_promo'), $this->pagehook, $position, $priority );
         }
         // main content - normal
         add_meta_box('bpge-admin-groups', __('Groups Management', 'bpge'), array( &$this, 'on_bpge_admin_groups'), $this->pagehook, 'normal', 'core');
@@ -78,6 +79,15 @@ class BPGE_ADMIN{
             echo '<input type="radio" name="bpge_re" '.($bpge['re'] == 1?'checked="checked"':'').' value="1">&nbsp'.__('Enable','bpge').'<br />';
             echo '<input type="radio" name="bpge_re" '.($bpge['re'] != 1?'checked="checked"':'').' value="0">&nbsp'.__('Disable','bpge');
         echo '</p>';
+    }
+    
+    function on_bpge_admin_promo($bpge){
+        echo '<p>If you:</p>
+                <ul style="list-style:disc;margin-left:15px;">
+                    <li>have a site/plugin idea and want to implement it</li>
+                    <li>want to modify this plugin to your needs and ready to sponsor this</li>
+                </ul>
+                <p>feel free to contact slaFFik via <a href="skype:slaffik_ua?chat">skype:slaFFik_ua</a></p>';
     }
     
     function on_bpge_admin_fields($bpge){
