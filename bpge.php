@@ -7,7 +7,7 @@ Version: 3.3.3
 Author: slaFFik
 Author URI: http://cosydale.com/
 */
-define ('BPGE_VERSION', '3.3.2');
+define ('BPGE_VERSION', '3.3.3');
 
 register_activation_hook( __FILE__, 'bpge_activation');
 //register_deactivation_hook( __FILE__, 'bpge_deactivation');
