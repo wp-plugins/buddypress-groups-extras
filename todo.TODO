@@ -1,0 +1,30 @@
+Admin area:
+ ☐ rewrite tabs - each tab as a separate class
+ ☐ activate file uploads via rich editor
+
+Default Pages:
+ ☐ add default pages tab
+   ☐ create default page
+   ☐ edit default page
+   ☐ delete default page
+   ☐ apply to all groups
+     ☐ how to fix page names collisions:
+         ☐ rewrite content
+         ☐ skip
+   ☐ activate multiple top level pages
+     ☐ add option to pages list to make it as a top level page
+
+Search:
+ ☐ admin area tab
+ ☐ add fields to groups search results
+ ☐ and pages to groups search results
+ ☐ exclude data from private groups
+ ☐ exclude data from hidden groups
+
+User access:
+ ☐ admin area tab
+ ☐ who can see group extras general settings
+ ☐ who can see list of fields
+ ☐ who can see list of pages
+ ☐ who can add/edit/remove fields
+ ☐ who can add/edit/remove pages
