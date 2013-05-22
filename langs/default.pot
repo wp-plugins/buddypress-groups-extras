@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BuddyPress Groups Extras\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-18 19:40+0200\n"
-"PO-Revision-Date: 2013-05-18 19:40+0200\n"
+"POT-Creation-Date: 2013-05-22 22:18+0200\n"
+"PO-Revision-Date: 2013-05-22 22:18+0200\n"
 "Last-Translator: slaFFik <slava.abakumov@gmail.com>\n"
 "Language-Team: slaFFik <slaffik@list.ru>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,6 @@ msgid "Groups Fields"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/bpge.php:195
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:177
 msgid "Sets of Fields"
 msgstr ""
 
@@ -116,22 +115,22 @@ msgid ""
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:250
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:92
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:94
 msgid "Who can open group admin tab Extras?"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:258
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:100
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:102
 msgid "Site admins only"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:262
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:104
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:106
 msgid "Group administrators and site admins"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:274
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:116
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:118
 msgid ""
 "If you upgraded from any version of BuddyPress Groups Extras, which had the "
 "version number less than 3.4, and if you want to preserve all previously "
@@ -140,19 +139,19 @@ msgid ""
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:277
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:119
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:121
 msgid ""
 "<strong>Important</strong>: Do not import data twice - as this will create "
 "lots of duplicated fields."
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:280
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:122
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:124
 msgid "Import Data"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:281
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:123
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:125
 msgid "Clear Data"
 msgstr ""
 
@@ -161,41 +160,41 @@ msgid "Note:Clearing data will delete everything except options on this page."
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:293
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:135
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:137
 msgid ""
 "Would you like to enable Rich Editor for easy use of html tags for groups "
 "pages?"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:297
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:139
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:141
 msgid "Enable"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:298
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:140
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:142
 msgid "Disable"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:307
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:149
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:151
 msgid ""
 "On BPGE deactivation you can delete or preserve all its settings and created "
 "content (like groups pages and fields). What do you want to do?"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:314
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:156
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:158
 msgid "Preserve all data"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:315
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:157
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:159
 msgid "Delete everything"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:336
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:188
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:187
 msgid ""
 "Please create/edit here fields you want to be available as standard blocks "
 "of data.<br />This will be helpful for group admins - no need for them to "
@@ -203,24 +202,24 @@ msgid ""
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:368
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:220
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:219
 msgid ""
 "Currently there are no predefined fields. Groups admins should create all "
 "fields by themselves."
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:410
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:464
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:479
 msgid "BuddyPress Groups Extras Pro"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:410
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:466
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:481
 msgid "Extend Your Groups"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin.php:413
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:470
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:485
 msgid "All changes were saved. Go and check results!"
 msgstr ""
 
@@ -230,51 +229,59 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:53
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:766
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:778
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:796
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:808
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:826
-msgid "General"
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:55
+msgid "General Options"
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:59
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:61
 msgid "Rich Editor"
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:64
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:66
 msgid "User Access"
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:69
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:71
 msgid "Data Import"
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:74
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:76
 msgid "Uninstall Options"
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:81
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:83
 msgid "Here are some general settings."
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:89
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:91
 msgid ""
 "Sometimes we want to change the access level to different parts of a site. "
 "Options below will help you to do this."
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:126
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:128
 msgid "Note: Clearing data will delete everything except options on this page."
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:241
-msgid "Groups"
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:179
+msgid "Default Sets of Fields"
 msgstr ""
 
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:262
-#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:263
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:240
+msgid "Default Pages"
+msgstr ""
+
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:248
+msgid ""
+"Please create/edit here global pages you want to be available in all groups. "
+msgstr ""
+
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:256
+msgid "Allowed Groups"
+msgstr ""
+
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:277
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/admin_tabs.php:278
 msgid "BP Groups Extras Pro"
 msgstr ""
 
@@ -467,6 +474,14 @@ msgstr ""
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:552
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/views/front_fields_add_edit.php:50
 msgid "Save Changes &rarr;"
+msgstr ""
+
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:766
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:778
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:796
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:808
+#: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:826
+msgid "General"
 msgstr ""
 
 #: W:\_server\home\ovi\pro\wp-content\plugins\buddypress-groups-extras-pro/core/loader.php:767
