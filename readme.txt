@@ -48,6 +48,7 @@ Please go to group admin area and define Fields and Pages navigation labels and 
 = 3.5 (22.05.2013) =
 * Completely new admin area - tabbed and better looking
 * New admin area option: User Access
+* New admin area option: Apply set of fields to all groups
 * Lots of other code improvements
 
 = 3.4 (10.04.2013) =
