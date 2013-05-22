@@ -42,6 +42,9 @@ Please go to group admin area and define Fields and Pages navigation labels and 
 
 == Changelog ==
 
+= 3.5.1 (22.05.2013) =
+* Added More page in admin area to collect votes for new features
+
 = 3.5 (22.05.2013) =
 * Completely new admin area - tabbed and better looking
 * New admin area option: User Access
