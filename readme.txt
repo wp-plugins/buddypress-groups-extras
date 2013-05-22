@@ -1,9 +1,9 @@
-=== BuddyPress Groups Extras ===
+=== BuddyPress Groups Extras Pro ===
 Contributors: slaFFik, valant
 Tags: buddypress, groups, ajax, meta, custom, fields, extend, admin, privacy
 Requires at least: 3.4 and BP 1.6
-Tested up to: 3.5.1 and BP BP 1.7
-Stable tag: 3.4
+Tested up to: 3.5.1 and BP BP 1.7.2
+Stable tag: 3.5
 
 After activating your groups will have ability to create any custom fields they want. Also extra page will appear with chosen content.
 
@@ -41,6 +41,11 @@ Please go to group admin area and define Fields and Pages navigation labels and 
 5. Adding new group page
 
 == Changelog ==
+
+= 3.5 (22.05.2013) =
+* Completely new admin area - tabbed and better looking
+* New admin area option: User Access
+* Lots of other code improvements
 
 = 3.4 (10.04.2013) =
 * New admin area option: delete or preserve all plugin's data on its deactivation
