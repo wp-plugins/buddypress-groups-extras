@@ -1,11 +1,3 @@
-Tut:
- ☐ create a separate tab called Tuts
-   ✔ display tut from support @done (13-05-25 15:18)
-   ☐ display tut to display pages data anywhere
-   ☐ display tut to display pages data anywhere
- ☐ show to retrieve fields/pages data via php and display elsewhere
- ☐ display this http://wordpress.org/support/topic/content-does-not-come-up-after-i-create-the-page?replies=10
-
 Admin area:
  ☐ rewrite tabs - each tab as a separate class
 
