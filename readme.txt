@@ -43,7 +43,7 @@ Please go to group admin area and define Fields and Pages navigation labels and 
 
 == Changelog ==
 
-= 3.5.3 (01.06.2013)
+= 3.5.3 (01.06.2013) =
 * Fully rewrote plugin admin area (again). It looks the same, but code improvements are huge.
 * Preparing for the PRO
 * Fixed some display problems with special chars in fields/pages titles
