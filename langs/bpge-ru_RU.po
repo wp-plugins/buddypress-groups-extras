@@ -1,0 +1,660 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: BuddyPress Groups Extras\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-10 20:52+0200\n"
+"PO-Revision-Date: 2013-04-10 20:54+0200\n"
+"Last-Translator: slaFFik <slava.abakumov@gmail.com>\n"
+"Language-Team: slaFFik <slaffik@list.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: \n"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:175
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:215
+msgid "Groups Fields"
+msgstr "Поля групп"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:195
+msgid "Sets of Fields"
+msgstr "Наборы полей"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:235
+msgid "Groups Pages"
+msgstr "Страницы групп"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:236
+msgid "Groups Page"
+msgstr "Страница групп"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:295
+msgid "Group Extras &rarr; General Settings"
+msgstr "Расширения &rarr; Общие настройки"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:298
+msgid "Group Extras &rarr; Fields Management"
+msgstr "Расширения &rarr; Управление полями"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:301
+msgid "Group Extras &rarr; Pages Management"
+msgstr "Расширения &rarr; Управление страницами"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:304
+msgid "Group Extras &rarr; Add Field"
+msgstr "Расширения &rarr; Добавить поле"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:307
+msgid "Group Extras &rarr; Edit Field"
+msgstr "Расширения &rarr; Редактирование поля"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:310
+msgid "Group Extras &rarr; Add Page"
+msgstr "Расширения &rarr; Добавить страницу"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:313
+msgid "Group Extras &rarr; Edit Page"
+msgstr "Расширения &rarr; Редактирование страницы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:316
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_add.php:8
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_edit.php:8
+msgid "Description"
+msgstr "Дополнительно"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:319
+msgid "Extras"
+msgstr "Расширения"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/bpge.php:322
+msgid "Pages"
+msgstr "Cтраницы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:52
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:53
+msgid "BP Groups Extras"
+msgstr "Расширение групп"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:69
+msgid "Rich Editor for Groups Pages"
+msgstr "TineMCE для страниц групп"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:70
+msgid "Plugin Uninstall Options"
+msgstr "Настройки деактивации плагина"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:71
+msgid "Data Import From Pre-v3.4"
+msgstr "Импортирование данных с версий до 3.4"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:72
+msgid "Need Help / Custom Work?"
+msgstr "Нужна помощь или заказная работа?"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:74
+msgid "Groups Management"
+msgstr "Управление группами"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:75
+msgid "Set of Fields"
+msgstr "Набор полей"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:243
+msgid ""
+"If you upgraded from any version of BuddyPress Groups Extras, which had the "
+"version number less than 3.4, and if you want to preserve all previously "
+"generated content (like default and groups fields etc) please do the import "
+"using controls below."
+msgstr ""
+"Если вы обновились с версии плагина до 3.4 и если хотите сохранить все "
+"созданные данные (наборы полей и поля групп), пожалуйста, воспользуйтесь "
+"импортом данных, используя кнопки ниже."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:246
+msgid ""
+"<strong>Important</strong>: Do not import data twice - as this will create "
+"lots of duplicated fields."
+msgstr ""
+"<strong>Важно</strong>: Не выполняйте импорт более одного раза, иначе будет "
+"создано много дубликатов полей."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:249
+msgid "Import Data"
+msgstr "Импортировать данные"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:250
+msgid "Clear Data"
+msgstr "Удалить данные"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:253
+msgid "Note:Clearing data will delete everything except options on this page."
+msgstr "Внимание: Удаление данных удалит все, кроме настроек на этой странице."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:262
+msgid ""
+"Would you like to enable Rich Editor for easy use of html tags for groups "
+"pages?"
+msgstr ""
+"Вы хотите разрешить использование расширенного редактора при создании/"
+"редактировании страниц групп?"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:266
+msgid "Enable"
+msgstr "Разрешить"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:267
+msgid "Disable"
+msgstr "Запретить"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:276
+msgid ""
+"On BPGE deactivation you can delete or preserve all its settings and created "
+"content (like groups pages and fields). What do you want to do?"
+msgstr ""
+"При деактивации плагина вы можете удалить все данные или же сохранить их "
+"(страницы всез групп, их поля). Что вы хотите  сделать?"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:283
+msgid "Preserve all data"
+msgstr "Сохранить все данные"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:284
+msgid "Delete everything"
+msgstr "Удалить все"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:305
+msgid ""
+"Please create/edit here fields you want to be available as standard blocks "
+"of data.<br />This will be helpful for group admins - no need for them to "
+"create lots of fields from scratch."
+msgstr ""
+"Пожалуйста, создайте измените здесь поля, которые вы хотите сделать "
+"стандартными.<br />Это поможет администраторам группы - им не понадобится "
+"все придумывать и вводить самостоятельно с нуля."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:335
+msgid ""
+"Currently there are no predefined fields. Groups admins should create all "
+"fields by themselves."
+msgstr ""
+"На данный момент не создан ни один набор стандартных полей. Администраторам "
+"групп придется все создавать самостоятельно."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:374
+msgid "BuddyPress Groups Extras"
+msgstr "BuddyPress Groups Extras"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:374
+msgid "Extend Your Groups"
+msgstr "Расширьте ваши группы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:377
+msgid "All changes were saved. Go and check results!"
+msgstr "Все изменения были успешно сохранены."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:390
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:405
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:412
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:391
+msgid "Refresh current page"
+msgstr "Перезагрузить текущую страницу"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/admin.php:391
+msgid "Refresh"
+msgstr "Обновить"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/cssjs.php:22
+msgid "Please enter options for this Field"
+msgstr "Пожалуйста, введите опции для этого поля"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/cssjs.php:23
+msgid "Option"
+msgstr "Опция"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/cssjs.php:24
+msgid "Remove It"
+msgstr "Удалить"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:202
+msgid "Edit link for group admins only"
+msgstr "Ссылка на редактирование только для админов группы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:261
+msgid "Clear"
+msgstr "Очистить"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:355
+msgid "Please specify the page name, where all fields will be displayed"
+msgstr ""
+"Пожалуйста, укажите здесь название страницы, на которой будут отображаться "
+"все поля"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:360
+#, php-format
+msgid ""
+"Do you want to make <strong>\"%s\"</strong> page public? Everyone will see "
+"this page."
+msgstr ""
+"Вы хотите сделать страницу <strong>\"%s\"</strong> доступной для просмотра? "
+"Все посетители сайта смогут ее просматривать."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:361
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:380
+msgid "Show it"
+msgstr "Показывать"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:362
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:381
+msgid "Hide it"
+msgstr "Спрятать"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:366
+#, php-format
+msgid "Please choose the layout for <strong>\"%s\"</strong> page"
+msgstr "Пожалуйста, выберите внешний вид страницы <strong>\"%s\"</strong>"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:367
+msgid "Plain (field title and its data below)"
+msgstr "Обычный текст (отображается заголовок поля и его содержимое)"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:368
+msgid "Profile style (in a table)"
+msgstr "Расширенный вид (как профиль пользователя)"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:374
+msgid "Please specify the page name, where all custom pages will be displayed"
+msgstr ""
+"Пожалуйста, укажите здесь название страницы, на которой будут отображаться "
+"все страницы группы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:379
+#, php-format
+msgid ""
+"Do you want to make <strong>\"%s\"</strong> page public (extra group pages "
+"will be displayed there)?"
+msgstr ""
+"Вы хотите сделать страницу <strong>\"%s\"</strong> доступной для просмотра? "
+"Страницы будут видеть все посетители."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:386
+msgid ""
+"You can reorder here all navigation links in this group. The first item will "
+"become a landing page for this group. Save changes after reordering.<br /"
+">Please do NOT make Admin pages on first place - that will cause display "
+"problems."
+msgstr ""
+"Здесь вы можете изменить порядок отображения ссылок навигации по группе. "
+"Первый элемент в списке станет главной страницей группы.<br /> После "
+"внесения изменений перезагрузите страницу, чтобы увидеть результат.<br /"
+">Пожалуйста, не делайте страницы, доступные только администраторам, первыми "
+"- это вызовет непредвиденные ошибки."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:406
+msgid "Rename the Home group page - Activity (for example) is far better."
+msgstr "Переименовать страницу группы \"Главная\"  - Активность будет лучше."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:470
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_list.php:7
+msgid "displayed"
+msgstr "отображается"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:470
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_list.php:7
+msgid "<u>not</u> displayed"
+msgstr "<u>не</u> отображается"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:472
+msgid "View this page live"
+msgstr "Просмотр страницы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:472
+msgid "View"
+msgstr "Просмотр"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:473
+msgid "Change its title, content etc"
+msgstr "Изменить заголовок, содержимое и т.д."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:473
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_list.php:6
+msgid "Edit"
+msgstr "Изменить"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:474
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_list.php:11
+msgid "Delete this item and all its content"
+msgstr "Удалить этот элемент и все его содержимое"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:474
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_list.php:7
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_list.php:11
+msgid "Delete"
+msgstr "Удалить"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:512
+msgid "Page Title"
+msgstr "Заголовок страницы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:518
+msgid "Page Slug"
+msgstr "Ссылка страницы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:524
+msgid "Page Content"
+msgstr "Содержимое страницы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:540
+msgid "Should this page be displayed for public in group navigation?"
+msgstr "Должна ли эта страница отображаться для всех в навигации группы?"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:542
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:43
+msgid "Display it"
+msgstr "Показывать"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:543
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:44
+msgid "Do NOT display it"
+msgstr "Не показывать"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:549
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:47
+msgid "Create New &rarr;"
+msgstr "Создать новое поле &rarr;"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:552
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:50
+msgid "Save Changes &rarr;"
+msgstr "Сохранить изменения &rarr;"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:766
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:778
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:796
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:808
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:826
+msgid "General"
+msgstr "Общее"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:767
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:779
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:797
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:809
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:827
+msgid "All Fields"
+msgstr "Все поля"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:768
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:780
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:798
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:810
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:828
+msgid "All Pages"
+msgstr "Все страницы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:769
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:781
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:799
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:811
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:829
+msgid "Add Field"
+msgstr "Добавить поле"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:770
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:782
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:800
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:812
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:830
+msgid "Add Page"
+msgstr "Добавить страницу"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:951
+msgid "Group Extras settings were succefully updated."
+msgstr "Настройки успешно обновлены."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:954
+msgid "New field was successfully added."
+msgstr "Новое поле успешно добавлено."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:957
+msgid "The field was successfully updated."
+msgstr "Поле успешно обновлено."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:960
+msgid "New page was successfully added."
+msgstr "Новая страница успешно добавлена."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:963
+msgid "The page was successfully updated."
+msgstr "Страница успешно обновлена."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:966
+msgid "Please create at least 1 extra field to show it in a list."
+msgstr ""
+"Пожалуйста, создайте как минимум 1 дополнительное поле для отображения в "
+"списке."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/core/loader.php:969
+msgid "Please create at least 1 extra page to show it in a list."
+msgstr "Пожалуйста, создайте как минимум 1 страницу для отображения в списке."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_groups_list.php:5
+msgid "Which groups do you allow to create custom fields and pages?"
+msgstr "Каким группам вы разрешаете создавать мета-поля и страницы?"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_groups_list.php:12
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_groups_list.php:36
+msgid "All groups"
+msgstr "Все группы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_add.php:2
+msgid "Add new Set of Fields"
+msgstr "Добавить новый набор полей"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_add.php:4
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_edit.php:4
+msgid "Name"
+msgstr "Название"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_add.php:11
+msgid "Save New Set of Fields"
+msgstr "Сохранить новый набор полей"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_edit.php:2
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_edit.php:12
+msgid "Edit Set of Fields"
+msgstr "Обновить набор полей"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:2
+msgid "Add field into"
+msgstr "Добавить поле в "
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:5
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:4
+msgid "Field Title"
+msgstr "Заголовок поля"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:9
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:10
+msgid "Field Type"
+msgstr "Тип поля"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:11
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:12
+msgid "Text Box"
+msgstr "Текстовая строка"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:12
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:13
+msgid "Multi-line Text Box"
+msgstr "Текстовый блок"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:13
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:14
+msgid "Checkboxes"
+msgstr "Чекбоксы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:14
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:15
+msgid "Radio Buttons"
+msgstr "Радио-кнопки"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:15
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:16
+msgid "Date Selector"
+msgstr "Выбор даты"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:16
+msgid "Dropdown Select Box"
+msgstr "Выпадающий список"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:23
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:23
+msgid "Add New"
+msgstr "Добавить опцию"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:28
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:31
+msgid "Field Description"
+msgstr "Описание поля"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:33
+msgid "Add New Field"
+msgstr "Добавить новое поле"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_field_add.php:36
+msgid "Create the Set of Fields"
+msgstr "Сохранить набор полей"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_list.php:5
+msgid "Show Fields"
+msgstr "Показать поля"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_list.php:17
+msgid "Fields not yet created"
+msgstr "Поля еще не созданы"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/admin_set_list.php:19
+msgid "Add field"
+msgstr "Добавить поле"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:17
+msgid "Drop Down Select Box"
+msgstr "Выпадающий список"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:36
+msgid ""
+"Is this field required (will be marked as required on group Edit Details "
+"page)?"
+msgstr ""
+"Это поле является обязательным (будет отображаться на странице "
+"редактирования данных группы)?"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:37
+msgid "Required"
+msgstr "Обязательное поле"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:38
+msgid "Not Required"
+msgstr "Не обязательное поле"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_add_edit.php:41
+#, php-format
+msgid "Should this field be displayed for public on \"<u>%s</u>\" page?"
+msgstr "Должно ли это поле отображаться на странице \"<u>%s</u>\"?"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_list.php:8
+msgid "required"
+msgstr "обязательно"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_list.php:8
+msgid "<u>not</u> required"
+msgstr "<u>не</u> обязательно"
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_list.php:10
+msgid "Change its title, description etc"
+msgstr "Изменить заголовок, описание, видимость и т.д."
+
+#: W:\_server\home\ovi\ab\wp-content\plugins\buddypress-groups-extras/views/front_fields_list.php:10
+msgid "Edit field"
+msgstr "Изменить"
+
+#~ msgid "Groups Field"
+#~ msgstr "Поле групп"
+
+#~ msgid "Displaying fields that were created in all community groups"
+#~ msgstr "Отображение полей, которые были созданы во всех группах сайта"
+
+#~ msgid "Add New Page"
+#~ msgstr "Добавить страницу"
+
+#~ msgid "Edit Page"
+#~ msgstr "Изменить страницу"
+
+#~ msgid "New Page"
+#~ msgstr "Новая страница"
+
+#~ msgid "View Page"
+#~ msgstr "Просмотр страницы"
+
+#~ msgid "Search Groups Pages"
+#~ msgstr "Поиск по страницам групп"
+
+#~ msgid "No groups pages found"
+#~ msgstr "Страницы групп не найдены"
+
+#~ msgid "No groups pages found in Trash"
+#~ msgstr "Страницы группы не найден в корзине"
+
+#~ msgid "Displaying pages that were created in all community groups"
+#~ msgstr "Отображение страниц, которые были созданы во всех группах сайта"
+
+#~ msgid "Default Fields"
+#~ msgstr "Стандартные поля"
+
+#~ msgid "Edit Field"
+#~ msgstr "Изменить"
+
+#~ msgid "New Field"
+#~ msgstr "Новое поле"
+
+#~ msgid "View Field"
+#~ msgstr "Посмотреть поле"
+
+#~ msgid "Search Groups Fields"
+#~ msgstr "Поиск по полям групп"
+
+#~ msgid "No groups Field found"
+#~ msgstr "Поле групп не найдено"
+
+#~ msgid "No groups fields found in Trash"
+#~ msgstr "Поля группы не найдены в корзине"
+
+#~ msgid "Manage Extras"
+#~ msgstr "Управления расширениями"
+
+#~ msgid "Settings"
+#~ msgstr "Настройки"
+
+#~ msgid "Create this Set"
+#~ msgstr "Создать набор"
+
+#~ msgid "Debug"
+#~ msgstr "Отладка"
+
+#~ msgid "Create a set of predefined fields"
+#~ msgstr "Создать набор стандартных полей"
+
+#~ msgid "Edit page"
+#~ msgstr "Изменить"
+
+#~ msgid "no parent"
+#~ msgstr "нет родителя"
+
+#~ msgid "Only 1 level is allowed"
+#~ msgstr "Разрешается только 1 уровень"
