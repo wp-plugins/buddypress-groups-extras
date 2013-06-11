@@ -3,29 +3,46 @@ Contributors: slaFFik, valant
 Tags: buddypress, groups, ajax, meta, custom, fields, extend, admin, privacy
 Requires at least: 3.4 and BP 1.6
 Tested up to: 3.5.1 and BP BP 1.7.2
-Stable tag: 3.5.5
+Stable tag: 3.5.6
 
 After activating your groups will have ability to create any custom fields they want. Also extra page will appear with chosen content.
 
 == Description ==
 
-After activating your groups will have ability to create any custom fields they want. Also extra page will appear with chosen content.
+BuddyPress Groups doesn't have much predefined content inside. Forums and activity are created (or not) by users. But most of the time group creators (aka administrators) have much more to say or explain to other members of community.
 
-= Features =
-* Choose groups you want to allow custom fields.
-* Create custom fields using various type (radios, select, input, textarea and text)
-* Edit fields data on Edit Group Details page in Group Admin area.
-* Display / hide page, where fields (chosen by you) will be displayed.
-* Reorder fields.
-* Create group pages (for group FAQ or wiki or whatever you want).
-* Edit pages data on Edit Group Details page in Group Admin area using WP RichEditor (with embedding videos!).
-* and more to come in future releases!
+BuddyPress Groups Extras will give ability to them to create extra content.
+
+= General =
+* Choose groups you want to allow custom fields and pages
+* Define who will have access to managing fields or pages in groups (groups admins or site admins or both)
+* Create predefined Set of Fields that can be imported to all groups on a site OR can be imported on per group basis
+* Get tutorials on how to use the plugin (simplified and advanced variants) right in your admin area
+
+= Groups Custom Fields =
+* Create custom fields using various type (radios, checkboxes, dropdown select, textarea and text)
+* Edit fields data on Edit Group Details page in Group Admin area
+* Display / hide page, where all groups fields will be displayed (and rename it too)
+* Reorder fields
+
+= Groups Custom Pages =
+* Create group pages (for group FAQ or wiki, or events, or descriptions or whatever you want)
+* Edit pages data in Group Admin area using WP RichEditor (with embedding content that WordPress supports!)
+* Display / hide page, where all groups pages will be displayed (and rename it too)
+* Reorder pages
+
+And even more in PRO version:
+* include groups pages and fields into global groups search
+* have a flexible access management to allow members see groups extra content only when they have rights
+* and much more.
+
+Make you groups full of possibilities!
 
 == Installation ==
 
 1. Upload plugin folder `/buddypress-groups-extras/` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Go to Groups Extras under BuddyPress menu and make customisations as needed.
+1. Go to BP Groups Extras under Settings menu and make customisations as needed.
 
 == Frequently Asked Questions ==
 
@@ -42,6 +59,12 @@ Please go to group admin area and define Fields and Pages navigation labels and 
 6. New Tutorials page in admin area
 
 == Changelog ==
+
+= 3.5.6 (11.06.2013) =
+* Preparing for search in group pages and fields (PRO feature)
+* Several code fixes and improvements
+* Donation button
+* readme.txt update
 
 = 3.5.5 (08.06.2013) =
 * Fixed issues with saving data in admin area when WP installed in subdirectory
