@@ -32,6 +32,7 @@ BuddyPress Groups Extras will give ability to them to create extra content.
 * Reorder pages
 
 And even more in PRO version:
+
 * include groups pages and fields into global groups search
 * have a flexible access management to allow members see groups extra content only when they have rights
 * and much more.
