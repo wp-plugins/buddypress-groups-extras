@@ -37,7 +37,7 @@ And even more in PRO version:
 * have a flexible access management to allow members see groups extra content only when they have rights
 * and much more.
 
-Make you groups full of possibilities!
+Make your groups full of possibilities!
 
 == Installation ==
 
