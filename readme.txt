@@ -3,7 +3,7 @@ Contributors: slaFFik, valant
 Tags: buddypress, groups, ajax, meta, custom, fields, extend, admin, privacy
 Requires at least: 3.4 and BP 1.6
 Tested up to: 3.5.2 and BP BP 1.7.2
-Stable tag: 3.5.10
+Stable tag: 3.6
 
 After activating your groups will have ability to create any custom fields they want. Also extra page will appear with chosen content.
 
@@ -50,6 +50,12 @@ Make your groups full of possibilities!
 = Why don't I see Fields/Pages in group navigation after plugin activation and enabling it for that particular group? =
 Please go to group admin area and define Fields and Pages navigation labels and check them to Show. This is done to prevent displaying empty pages with no content.
 
+= How can I change the look and feel of a plugin output in groups? =
+= How can I redefine templates? =
+Starting from BPGE v3.6 you can now change the html that is used to display any content in front-end (in groups) right from your theme folder. This is useful if you want to change the way pages and fields are displayed, but it works for "Admin -> Extras" management pages as well.
+
+To do this you need to create a folder called `bpge` in the root of your theme. So for example if you use Frisco theme, create a folder like this: `wp-content/themes/frisco-for-buddypress/bpge`. Then copy required file (that you want to modify) from this plugin folder `wp-content/plugins/buddypress-groups-extras/views/front` to that created in a theme. That is it - now the plugin uses the template from your theme.
+
 == Screenshots ==
 
 1. Admin Page
@@ -60,6 +66,10 @@ Please go to group admin area and define Fields and Pages navigation labels and 
 6. New Tutorials page in admin area
 
 == Changelog ==
+
+= 3.6 (03.07.2013) =
+* Improved css for some parts of views
+* New feature: you can now redefine templates that are used to display plugin data in groups right in your theme
 
 = 3.5.10 (21.06.2013) =
 * Fixed issue with access to some parts of Extras in groups admin area
