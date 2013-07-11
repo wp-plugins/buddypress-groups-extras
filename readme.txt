@@ -74,12 +74,14 @@ To do this you need to create a folder called `bpge` in the root of your theme. 
 = 3.6.1 (11.07.2013) =
 * Enhancement: Now group custom pages and fields fully inherites group privacy options for current logged in user (they will not appear even in navigation)
 * New: ability to enable rich editor for custom fields (textarea's)
+* Updated German translation (props <a href="http://www.per4mance.com/">Thorsten Wollenhöfe</a>)
 
 == Changelog ==
 
 = 3.6.1 (11.07.2013) =
 * Enhancement: Now group custom pages and fields fully inherites group privacy options for current logged in user (they will not appear even in navigation)
 * New: ability to enable rich editor for custom fields (textarea's)
+* Updated German translation (props <a href="http://www.per4mance.com/">Thorsten Wollenhöfe</a>)
 
 = 3.6 (03.07.2013) =
 * Improved css for some parts of views
