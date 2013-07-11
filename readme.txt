@@ -2,8 +2,8 @@
 Contributors: slaFFik, valant
 Tags: buddypress, groups, ajax, meta, custom, fields, extend, admin, privacy
 Requires at least: 3.4 and BP 1.6
-Tested up to: 3.5.2 and BP BP 1.7.2
-Stable tag: 3.6
+Tested up to: 3.5.2 and BP BP 1.7.3
+Stable tag: 3.6.1
 
 After activating your groups will have ability to create any custom fields they want. Also extra page will appear with chosen content.
 
@@ -35,6 +35,9 @@ And even more in PRO version:
 
 * include groups pages and fields into global groups search
 * have a flexible access management to allow members see groups extra content only when they have rights
+* several groups top levels pages
+* group blog (collaborative or not) posts
+* group polls
 * and much more.
 
 Make your groups full of possibilities!
@@ -65,7 +68,18 @@ To do this you need to create a folder called `bpge` in the root of your theme. 
 5. Adding new group page
 6. New Tutorials page in admin area
 
+
+== Upgrade Notice ==
+
+= 3.6.1 (11.07.2013) =
+* Enhancement: Now group custom pages and fields fully inherites group privacy options for current logged in user (they will not appear even in navigation)
+* New: ability to enable rich editor for custom fields (textarea's)
+
 == Changelog ==
+
+= 3.6.1 (11.07.2013) =
+* Enhancement: Now group custom pages and fields fully inherites group privacy options for current logged in user (they will not appear even in navigation)
+* New: ability to enable rich editor for custom fields (textarea's)
 
 = 3.6 (03.07.2013) =
 * Improved css for some parts of views
