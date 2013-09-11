@@ -73,7 +73,7 @@ To do this you need to create a folder called `bpge` in the root of your theme. 
 
 = 3.6.5 (11.09.2013) =
 * Added error message when saving required fields as empty on group "Admin -> Details" page
-* Added some social network love in admin area
+* Added some social love in admin area
 * Updated i18n files
 
 == Changelog ==
